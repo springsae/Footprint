@@ -1,13 +1,269 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pd9-8P-7cO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--timeline-->
+        <scene sceneID="YWe-7t-9dd">
+            <objects>
+                <viewController id="sO9-zm-j6W" customClass="TLViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kaR-k5-njp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nuu-DH-HXR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QCD-WX-88x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BQu-5U-08H">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="timeline" id="KUd-e7-ZT2"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="BQu-5U-08H" id="M6p-RY-4AX"/>
+                        <segue destination="rzi-dJ-124" kind="showDetail" identifier="backToComment" id="NWx-EV-GeU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdb-w0-ZMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="466"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="Mf8-A2-IQU">
+            <objects>
+                <viewController storyboardIdentifier="IV" id="8zE-kj-1St" customClass="imageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5n8-YZ-cHT"/>
+                        <viewControllerLayoutGuide type="bottom" id="fRS-H0-UC7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MYk-F1-wMy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbw-Gh-ch8">
+                                <rect key="frame" x="0.0" y="117" width="320" height="320"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-PP-K2v">
+                                <rect key="frame" x="9" y="79" width="34" height="30"/>
+                                <state key="normal" title="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackCamera:" destination="8zE-kj-1St" eventType="touchUpInside" id="51b-RF-46e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y20-r3-Tgj">
+                                <rect key="frame" x="265" y="79" width="30" height="30"/>
+                                <state key="normal" title="next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="rzi-dJ-124" kind="show" identifier="showComment" id="BXm-kM-D7p"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8P-LN-db6">
+                                <rect key="frame" x="0.0" y="418" width="320" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="backCamera" destination="YpB-PP-K2v" id="iRg-XO-fZY"/>
+                        <outlet property="callComment" destination="y20-r3-Tgj" id="2HQ-hg-GtS"/>
+                        <outlet property="imageChangePicker" destination="F8P-LN-db6" id="ICk-D8-WfW"/>
+                        <outlet property="showImage" destination="Mbw-Gh-ch8" id="2fQ-Er-Rpz"/>
+                        <outlet property="tapCallComment" destination="y20-r3-Tgj" id="D64-nA-a2A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SjW-vw-8dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="-189"/>
+        </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="qyK-27-uFX">
+            <objects>
+                <viewController id="rzi-dJ-124" customClass="commentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zOS-Oe-nh2"/>
+                        <viewControllerLayoutGuide type="bottom" id="5MD-JI-iON"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DUa-wx-GOy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63v-CN-FU8">
+                                <rect key="frame" x="6" y="115" width="150" height="150"/>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v56-EZ-sWR">
+                                <rect key="frame" x="154" y="115" width="150" height="150"/>
+                            </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
+                                <rect key="frame" x="10" y="270" width="295" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-V1-qME">
+                                <rect key="frame" x="263" y="77" width="30" height="30"/>
+                                <state key="normal" title="ok">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapOkButton:" destination="rzi-dJ-124" eventType="touchUpInside" id="7WM-JB-E8m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-GO-lLT">
+                                <rect key="frame" x="6" y="77" width="34" height="30"/>
+                                <state key="normal" title="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackImage:" destination="rzi-dJ-124" eventType="touchUpInside" id="Rrf-rV-z7f"/>
+                                    <segue destination="8zE-kj-1St" kind="showDetail" identifier="backImageView" id="kad-4B-gxK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geY-lQ-cBY">
+                                <rect key="frame" x="16" y="530" width="39" height="30"/>
+                                <state key="normal" title="home">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBackHome:" destination="rzi-dJ-124" eventType="touchUpInside" id="IDu-ZN-jWl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ro-dp-B4h">
+                                <rect key="frame" x="263" y="530" width="38" height="30"/>
+                                <state key="normal" title="share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapShare:" destination="rzi-dJ-124" eventType="touchUpInside" id="7af-VT-0u0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="backImage" destination="U7f-GO-lLT" id="QXk-mK-Pvl"/>
+                        <outlet property="homeButton" destination="geY-lQ-cBY" id="bDV-Ka-Rm6"/>
+                        <outlet property="okButton" destination="cEq-V1-qME" id="j0O-TI-Vca"/>
+                        <outlet property="picker" destination="v56-EZ-sWR" id="F1Z-Uo-hXE"/>
+                        <outlet property="shareButton" destination="5Ro-dp-B4h" id="EKf-Re-JJr"/>
+                        <outlet property="smallImage" destination="63v-CN-FU8" id="R4b-yj-5Ea"/>
+                        <outlet property="textField" destination="Fag-v7-NiZ" id="gar-Ob-xS5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skd-e0-4NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="770" y="-225"/>
+        </scene>
+        <!--map-->
+        <scene sceneID="CNn-YC-DDA">
+            <objects>
+                <viewController id="8Ly-rC-lCV" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NJ0-Ni-lam"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Hi-ij-qKd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jf0-YD-gup">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="map" id="NeM-uG-LIq"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6t-s5-81W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-506" y="1174"/>
+        </scene>
+        <!--home-->
+        <scene sceneID="kJg-9k-Bzq">
+            <objects>
+                <viewController id="ecZ-ux-Ac9" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H6y-1V-zKD"/>
+                        <viewControllerLayoutGuide type="bottom" id="1te-gI-nTV"/>
+                    </layoutGuides>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="qrQ-AV-u3q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-DB-5Ak">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-cj-BhE">
+                                        <rect key="frame" x="130" y="475" width="60" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapCallCamera:" destination="ecZ-ux-Ac9" eventType="touchUpInside" id="5Jb-Gb-IXz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2000" id="xdZ-wd-6US"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="GRh-DB-5Ak" firstAttribute="width" secondItem="qrQ-AV-u3q" secondAttribute="width" id="Bw2-1S-m4F"/>
+                        </constraints>
+                    </scrollView>
+                    <tabBarItem key="tabBarItem" title="home" id="pKT-h0-IiY"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="callCamera" destination="bqY-cj-BhE" id="pmh-iE-dxk"/>
+                        <outlet property="koteiView" destination="WBJ-b4-d6M" id="Yav-zH-7Ik"/>
+                        <outlet property="myScrollView" destination="qrQ-AV-u3q" id="RWA-JP-as7"/>
+                        <outlet property="myView" destination="GRh-DB-5Ak" id="eWe-4i-PuT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FhX-ax-p6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="WBJ-b4-d6M">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="-256" y="-189"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="WR1-ls-UMO">
+            <objects>
+                <tabBarController id="Pd9-8P-7cO" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Xg6-WY-LwP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ecZ-ux-Ac9" kind="relationship" relationship="viewControllers" id="gNl-k5-CmU"/>
+                        <segue destination="sO9-zm-j6W" kind="relationship" relationship="viewControllers" id="CKv-u0-eMJ"/>
+                        <segue destination="8Ly-rC-lCV" kind="relationship" relationship="viewControllers" id="svA-Ro-ECS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVH-Nz-ORf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-850" y="77"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -20,6 +276,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-636" y="2048"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NWx-EV-GeU"/>
+    </inferredMetricsTieBreakers>
 </document>

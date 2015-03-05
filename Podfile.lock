@@ -1,0 +1,10 @@
+PODS:
+  - JPSThumbnailAnnotation (1.0.0)
+
+DEPENDENCIES:
+  - JPSThumbnailAnnotation
+
+SPEC CHECKSUMS:
+  JPSThumbnailAnnotation: 3146c1cc9bdfb5e12888cf6c85d8d35940e66c0d
+
+COCOAPODS: 0.35.0
