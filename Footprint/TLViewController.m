@@ -28,7 +28,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     //一旦配列に取り出す
-    _assetsUrls = [defaults objectForKey:@"assetsURLs"];
+    _assetsUrls = [defaults objectForKey:@"photoData"];
 
     _counter = 0;
     
@@ -86,6 +86,10 @@
         
     }
 
+    if (_library ==nil)
+    {
+        _library = [[ALAssetsLibrary alloc]init];
+    }
 
 }
 
@@ -110,6 +114,10 @@
     
     //textfield編集不可
     cell.CustomCellText.editable = NO;
+    
+    NSDictionary *rowDictionary = _assetsUrls[indexPath.row];
+    cell.CustomCellText.text = rowDictionary[@"comment"];
+    [self showPhoto:rowDictionary[@"photo"] ImageView:cell.CustomCellImage Label:cell.CustomCellTime];
     
     return cell;
     
@@ -139,62 +147,63 @@
 }
 
 //
-//-(void)showPhoto:(NSString *)url
-//{
-//    
-//    //URLからALAssetを取得
-//    [_library assetForURL:[NSURL URLWithString:url]
-//              resultBlock:^(ALAsset *asset)
-//    {
-//                  
-//        //画像があればYES、無ければNOを返す
-//        if(asset)
-//        {
-//            NSLog(@"データがあります");
-//            //ALAssetRepresentationクラスのインスタンスの作成
-//            ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-//            UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
-//            
-//            //exifを取得する
-//            // raw data
-//            NSUInteger size = [assetRepresentation size];
-//            uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-//            if(buff != nil)
-//            {
-//                NSError *error = nil;
-//                NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-//                if (bytesRead && !error)
-//                {
-//                    NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-//                    
-//                    CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-//                    NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-//                    if (metadata) {
-//                        NSLog(@"%@", [metadata description]);
-//                    }
-//                    else
-//                    {
-//                        NSLog(@"no metadata");
-//                    }
-//                    
-//                }
-//                if (error) {
-//                    NSLog(@"error:%@", error);
-//                    free(buff);
-//                }
-//                
-//            }
-//            
-//            
-//            
-//        }
-//        else
-//        {
-//            NSLog(@"データがありません");
-//        }
-//                  
-//    } failureBlock: nil];
-//}
+-(void)showPhoto:(NSString *)url ImageView:(UIImageView *)imageView Label:(UILabel *)label
+{
+    
+    //URLからALAssetを取得
+    [_library assetForURL:[NSURL URLWithString:url]
+              resultBlock:^(ALAsset *asset)
+    {
+                  
+        //画像があればYES、無ければNOを返す
+        if(asset)
+        {
+            NSLog(@"データがあります");
+            //ALAssetRepresentationクラスのインスタンスの作成
+            ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+            UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+            imageView.image = fullscreenImage;
+            
+            //exifを取得する
+            // raw data
+            NSUInteger size = [assetRepresentation size];
+            uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+            if(buff != nil)
+            {
+                NSError *error = nil;
+                NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+                if (bytesRead && !error)
+                {
+                    NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+                    
+                    CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+                    NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+                    if (metadata)
+                    {
+                        label.text = metadata[@"{TIFF}"][@"DateTime"];
+                        NSLog(@"%@", [metadata description]);
+                    }
+                    else
+                    {
+                        NSLog(@"no metadata");
+                    }
+                    
+                }
+                if (error) {
+                    NSLog(@"error:%@", error);
+                    free(buff);
+                }
+            }
+            
+           }
+           else
+          {
+            NSLog(@"データがありません");
+          }
+                  
+    } failureBlock: nil];
+}
+
 
 //-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //{

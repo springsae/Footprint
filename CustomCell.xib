@@ -15,11 +15,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu0-ak-g8b">
                         <rect key="frame" x="8" y="2" width="75" height="75"/>
                     </imageView>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="時間" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wg6-Z9-bwy">
-                        <rect key="frame" x="91" y="1" width="134" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fA9-bj-huf">
                         <rect key="frame" x="91" y="22" width="221" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,14 +22,20 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJW-16-WBe">
+                        <rect key="frame" x="91" y="9" width="207" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="CustomCellImage" destination="uu0-ak-g8b" id="P2x-Bu-7NG"/>
                 <outlet property="CustomCellText" destination="fA9-bj-huf" id="PON-DA-VG4"/>
-                <outlet property="CustomCellTime" destination="wg6-Z9-bwy" id="cQd-uS-YQw"/>
+                <outlet property="CustomCellTime" destination="DJW-16-WBe" id="bHh-FM-8Fv"/>
             </connections>
-            <point key="canvasLocation" x="-499" y="193"/>
+            <point key="canvasLocation" x="-499" y="192"/>
         </tableViewCell>
     </objects>
 </document>

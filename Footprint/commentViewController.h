@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface commentViewController : UIViewController<UIPickerViewDelegate>
 {
@@ -40,5 +41,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 - (IBAction)tapShare:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *commentText;
 
 @end

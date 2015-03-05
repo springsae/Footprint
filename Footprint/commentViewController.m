@@ -10,6 +10,7 @@
 #import "imageViewController.h"
 #import "HomeViewController.h"
 
+
 @interface commentViewController ()<UITextFieldDelegate,UITextViewDelegate>
 
 @end
@@ -39,27 +40,35 @@
     
     _textField.delegate = self;
     
+    //textViewを角丸にする
+    [[self.commentText layer] setCornerRadius:10.0];
+    [self.commentText setClipsToBounds:YES];
     
-    //textFieldを角丸にする
-    [[self.textField layer] setCornerRadius:10.0];
-    [self.textField setClipsToBounds:YES];
+    //textViewに黒色の枠を付ける
+    [[self.commentText layer] setBorderColor:[[UIColor blackColor] CGColor]];
+    [[self.commentText layer] setBorderWidth:1.0];
     
-    //textViewに黒色の枠線を付ける
-    [[self.textField layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[self.textField layer] setBorderWidth:1.0];
     
-    // UITextFieldのインスタンスを生成
-    CGRect rect = CGRectMake(10, 270, 295, 80);
-    UITextField *textField = [[UITextField alloc]initWithFrame:rect];
-    
-    // 枠線のスタイルを設定
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    
-    // デリゲートを設定
-    textField.delegate = self;
-    
-    // UITextFieldのインスタンスをビューに追加
-    [self.view addSubview:textField];
+//    //textFieldを角丸にする
+//    [[self.textField layer] setCornerRadius:10.0];
+//    [self.textField setClipsToBounds:YES];
+//    
+//    //textViewに黒色の枠線を付ける
+//    [[self.textField layer] setBorderColor:[[UIColor blackColor] CGColor]];
+//    [[self.textField layer] setBorderWidth:1.0];
+//    
+//    // UITextFieldのインスタンスを生成
+//    CGRect rect = CGRectMake(10, 270, 295, 80);
+//    UITextField *textField = [[UITextField alloc]initWithFrame:rect];
+//    
+//    // 枠線のスタイルを設定
+//    textField.borderStyle = UITextBorderStyleRoundedRect;
+//    
+//    // デリゲートを設定
+//    textField.delegate = self;
+//    
+//    // UITextFieldのインスタンスをビューに追加
+//    [self.view addSubview:textField];
 
 }
 
@@ -222,10 +231,16 @@
     NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
     [myDictionary setObject:_assetsurl forKey:@"photo"];
     [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
-    [myDictionary setObject:_textField.text forKey:@"comment"];
+    [myDictionary setObject:_commentText.text forKey:@"comment"];
     
     //NSMutableArrayにdictionaryを挿入
     //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
+    if(_photolist==nil)
+    {
+        _photolist= [[NSMutableArray alloc] init];
+    }
+    
+    
     [_photolist addObject:myDictionary];
     
     NSLog(@"%@データあり",myDictionary);
