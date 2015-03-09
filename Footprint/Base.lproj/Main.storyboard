@@ -75,10 +75,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbw-Gh-ch8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbw-Gh-ch8">
                                 <rect key="frame" x="0.0" y="90" width="320" height="320"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-PP-K2v">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpB-PP-K2v">
                                 <rect key="frame" x="0.0" y="52" width="34" height="30"/>
                                 <state key="normal" title="back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,7 +90,7 @@
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8P-LN-db6">
                                 <rect key="frame" x="-4" y="419" width="328" height="162"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y20-r3-Tgj">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y20-r3-Tgj">
                                 <rect key="frame" x="290" y="52" width="30" height="30"/>
                                 <state key="normal" title="next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,6 +178,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="9ft-MF-Mq9"/>
                                 <exclude reference="AgV-E6-fns"/>
                                 <exclude reference="BqA-rt-0qt"/>
                                 <exclude reference="CaF-EQ-N9C"/>
@@ -187,7 +188,9 @@
                                 <exclude reference="QkO-w1-sQf"/>
                                 <exclude reference="Rkh-rQ-PwE"/>
                                 <exclude reference="TO9-pe-uNJ"/>
+                                <exclude reference="TeG-9u-lWm"/>
                                 <exclude reference="U2g-m4-CG2"/>
+                                <exclude reference="WIg-H2-FOS"/>
                                 <exclude reference="XUw-aa-1lM"/>
                                 <exclude reference="aam-kl-QoC"/>
                                 <exclude reference="hZP-ux-Enw"/>
@@ -197,10 +200,13 @@
                                 <exclude reference="pxh-DM-HAO"/>
                                 <exclude reference="xd8-r9-Ajc"/>
                                 <exclude reference="z8Y-Dq-T4D"/>
+                                <exclude reference="34v-M8-ilW"/>
                                 <exclude reference="446-0J-oGB"/>
                                 <exclude reference="57D-UD-x58"/>
                                 <exclude reference="607-g9-gVQ"/>
                                 <exclude reference="Ay9-vb-x2k"/>
+                                <exclude reference="BLb-i4-JSo"/>
+                                <exclude reference="C8F-cq-MGV"/>
                                 <exclude reference="Grz-Ri-YHC"/>
                                 <exclude reference="HTF-vH-iam"/>
                                 <exclude reference="IQc-6O-pzw"/>
@@ -209,10 +215,12 @@
                                 <exclude reference="NPg-oM-cKM"/>
                                 <exclude reference="Qju-ni-iqc"/>
                                 <exclude reference="WrJ-sT-nvY"/>
+                                <exclude reference="ZqR-J5-Wci"/>
                                 <exclude reference="a4F-VG-8he"/>
                                 <exclude reference="esM-Ec-MGt"/>
                                 <exclude reference="fgo-L2-3BS"/>
                                 <exclude reference="hhh-cz-smH"/>
+                                <exclude reference="lDW-yW-hnU"/>
                                 <exclude reference="ngb-JH-4YN"/>
                                 <exclude reference="s6a-hT-kRK"/>
                                 <exclude reference="wBd-hi-ZfR"/>
@@ -220,11 +228,14 @@
                                 <exclude reference="yo4-nr-vAm"/>
                                 <exclude reference="77h-Bn-dgs"/>
                                 <exclude reference="Fnq-xS-hlD"/>
+                                <exclude reference="Ic7-e0-SxP"/>
+                                <exclude reference="Mbk-JU-b4W"/>
                                 <exclude reference="Oh8-gm-8bt"/>
                                 <exclude reference="WfD-v7-a9B"/>
                                 <exclude reference="XJT-uH-J67"/>
                                 <exclude reference="Yix-Iy-qR3"/>
                                 <exclude reference="jB2-S0-baB"/>
+                                <exclude reference="yM1-cZ-yFI"/>
                                 <exclude reference="7JU-Xa-Dil"/>
                                 <exclude reference="9LJ-gw-0qO"/>
                                 <exclude reference="G1x-Wg-Hlc"/>
@@ -232,7 +243,9 @@
                                 <exclude reference="eq5-3i-fZq"/>
                                 <exclude reference="jT1-9k-wXr"/>
                                 <exclude reference="jdi-Wu-gPS"/>
+                                <exclude reference="y50-q2-04g"/>
                                 <exclude reference="WGf-nA-gUo"/>
+                                <exclude reference="Z4K-07-LeP"/>
                                 <exclude reference="fpK-0H-3CZ"/>
                                 <exclude reference="jzD-VG-fXl"/>
                             </mask>
@@ -263,13 +276,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63v-CN-FU8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63v-CN-FU8">
                                 <rect key="frame" x="6" y="107" width="150" height="150"/>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v56-EZ-sWR">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v56-EZ-sWR">
                                 <rect key="frame" x="164" y="95" width="140" height="162"/>
                             </pickerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="コメント" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="コメント" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
                                 <rect key="frame" x="13" y="282" width="295" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -324,6 +337,18 @@
                             <constraint firstItem="v56-EZ-sWR" firstAttribute="trailing" secondItem="DUa-wx-GOy" secondAttribute="trailingMargin" id="xa5-ov-5WG"/>
                             <constraint firstItem="63v-CN-FU8" firstAttribute="top" secondItem="zOS-Oe-nh2" secondAttribute="bottom" constant="87" id="yYf-9R-wlR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tCo-oA-ZzP"/>
+                                <exclude reference="vh1-r3-Kfx"/>
+                                <exclude reference="yYf-9R-wlR"/>
+                                <exclude reference="8hy-ST-wbM"/>
+                                <exclude reference="OsI-Hv-rBc"/>
+                                <exclude reference="xa5-ov-5WG"/>
+                                <exclude reference="d0W-FK-1aC"/>
+                                <exclude reference="ed0-hl-RwK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -368,11 +393,11 @@
                         <viewControllerLayoutGuide type="top" id="H6y-1V-zKD"/>
                         <viewControllerLayoutGuide type="bottom" id="1te-gI-nTV"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="qrQ-AV-u3q">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qrQ-AV-u3q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-DB-5Ak">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-DB-5Ak">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-cj-BhE">
@@ -454,6 +479,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NWx-EV-GeU"/>
+        <segue reference="BXm-kM-D7p"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -51,40 +51,40 @@
     UINib *nib = [UINib nibWithNibName:CustomTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     
-    
-    //------- exifを取得する --------
-    // raw data
-    //ALAssetRepresentationクラスのインスタンスの作成
-    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-    NSUInteger size = [assetRepresentation size];
-    uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-    if(buff != nil)
-    {
-        NSError *error = nil;
-        NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-        if (bytesRead && !error)
-        {
-            NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-            
-            CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-            NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-            if (metadata)
-            {
-                NSLog(@"%@", [metadata description]);
-            }
-            else
-            {
-                NSLog(@"no metadata");
-            }
-            
-        }
-        if (error)
-        {
-            NSLog(@"error:%@", error);
-            free(buff);
-        }
-        
-    }
+//    
+//    //------- exifを取得する --------
+//    // raw data
+//    //ALAssetRepresentationクラスのインスタンスの作成
+//    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+//    NSUInteger size = [assetRepresentation size];
+//    uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+//    if(buff != nil)
+//    {
+//        NSError *error = nil;
+//        NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+//        if (bytesRead && !error)
+//        {
+//            NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+//            
+//            CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+//            NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+//            if (metadata)
+//            {
+//                NSLog(@"%@", [metadata description]);
+//            }
+//            else
+//            {
+//                NSLog(@"no metadata");
+//            }
+//            
+//        }
+//        if (error)
+//        {
+//            NSLog(@"error:%@", error);
+//            free(buff);
+//        }
+//        
+//    }
 
     if (_library ==nil)
     {

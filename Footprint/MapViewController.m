@@ -140,10 +140,10 @@
 {
     NSMutableDictionary *gps = [NSMutableDictionary new];
     
-//    // 日付
-//    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[HomeViewController GPSDateFormatter] stringFromDate:location.timestamp];
-//    // タイムスタンプ
-//    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[HomeViewController GPSTimeFormatter] stringFromDate:location.timestamp];
+    // 日付
+    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[HomeViewController GPSDateFormatter] stringFromDate:location.timestamp];
+    // タイムスタンプ
+    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[HomeViewController GPSTimeFormatter] stringFromDate:location.timestamp];
     
     // 緯度
     CGFloat latitude = location.coordinate.latitude;
