@@ -30,40 +30,45 @@
     
     _counter = 0;
     
-    
-    //------- exifを取得する --------
-    // raw data
-    //ALAssetRepresentationクラスのインスタンスの作成
-    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-    NSUInteger size = [assetRepresentation size];
-    uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-    if(buff != nil)
+    if (_library ==nil)
     {
-        NSError *error = nil;
-        NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-        if (bytesRead && !error)
-        {
-            NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-            
-            CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-            NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-            if (metadata)
-            {
-                NSLog(@"%@", [metadata description]);
-            }
-            else
-            {
-                NSLog(@"no metadata");
-            }
-            
-        }
-        if (error)
-        {
-            NSLog(@"error:%@", error);
-            free(buff);
-        }
-        
+        _library = [[ALAssetsLibrary alloc]init];
     }
+    
+    
+//    //------- exifを取得する --------
+//    // raw data
+//    //ALAssetRepresentationクラスのインスタンスの作成
+//    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+//    NSUInteger size = [assetRepresentation size];
+//    uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+//    if(buff != nil)
+//    {
+//        NSError *error = nil;
+//        NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+//        if (bytesRead && !error)
+//        {
+//            NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+//            
+//            CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+//            NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+//            if (metadata)
+//            {
+//                NSLog(@"%@", [metadata description]);
+//            }
+//            else
+//            {
+//                NSLog(@"no metadata");
+//            }
+//            
+//        }
+//        if (error)
+//        {
+//            NSLog(@"error:%@", error);
+//            free(buff);
+//        }
+//        
+//    }
 
     
     //MapViewオブジェクトを作成
@@ -116,6 +121,62 @@
     
 }
 
+////確認
+//-(void)settingPin:(NSString *)url　JPSThumbnail:(JPSThumbnail *)
+//{
+//    //URLからALAssetを取得
+//    [_library assetForURL:[NSURL URLWithString:url]
+//              resultBlock:^(ALAsset *asset)
+//
+//         
+//         //画像があればYES、無ければNOを返す
+//         if(asset)
+//         {
+//             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+//             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+//             imageView.image = fullscreenImage;
+//
+//             //exifを取得する
+//             // raw data
+//             NSUInteger size = [assetRepresentation size];
+//             uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+//             if(buff != nil)
+//             {
+//                 NSError *error = nil;
+//                 NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+//                 if (bytesRead && !error)
+//                 {
+//                     NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+//                     
+//                     CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+//                     NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+//                     if (metadata)
+//                     {
+//                         label.text = metadata[@"{TIFF}"][@"DateTime"];
+//                         NSLog(@"%@", [metadata description]);
+//                     }
+//                     else
+//                     {
+//                         NSLog(@"no metadata");
+//                     }
+//                     
+//                 }
+//                 if (error)
+//                 {
+//                     NSLog(@"error:%@", error);
+//                     free(buff);
+//                 }
+//             }
+//             
+//         }
+//         else
+//         {
+//             NSLog(;"データがありません");
+//         }
+//         
+//     } failureBlock: nil];
+//}
+
 //- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 //    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
 //        [((NSObject<JPSThumbnailAnnotationViewProtocol> *)view) didSelectAnnotationViewInMap:mapView];
@@ -134,57 +195,57 @@
     }
     return nil;
 }
-
-//位置情報オブジェクトを取得する
-- (NSDictionary *)GPSDictionaryForLocation:(CLLocation *)location
-{
-    NSMutableDictionary *gps = [NSMutableDictionary new];
-    
-    // 日付
-    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[HomeViewController GPSDateFormatter] stringFromDate:location.timestamp];
-    // タイムスタンプ
-    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[HomeViewController GPSTimeFormatter] stringFromDate:location.timestamp];
-    
-    // 緯度
-    CGFloat latitude = location.coordinate.latitude;
-    NSString *gpsLatitudeRef;
-    if (latitude < 0) {
-        latitude = -latitude;
-        gpsLatitudeRef = @"S";
-    } else {
-        gpsLatitudeRef = @"N";
-    }
-    gps[(NSString *)kCGImagePropertyGPSLatitudeRef] = gpsLatitudeRef;
-    gps[(NSString *)kCGImagePropertyGPSLatitude] = @(latitude);
-    
-    // 経度
-    CGFloat longitude = location.coordinate.longitude;
-    NSString *gpsLongitudeRef;
-    if (longitude < 0) {
-        longitude = -longitude;
-        gpsLongitudeRef = @"W";
-    } else {
-        gpsLongitudeRef = @"E";
-    }
-    gps[(NSString *)kCGImagePropertyGPSLongitudeRef] = gpsLongitudeRef;
-    gps[(NSString *)kCGImagePropertyGPSLongitude] = @(longitude);
-    
-    // 標高
-    CGFloat altitude = location.altitude;
-    if (!isnan(altitude)){
-        NSString *gpsAltitudeRef;
-        if (altitude < 0) {
-            altitude = -altitude;
-            gpsAltitudeRef = @"1";
-        } else {
-            gpsAltitudeRef = @"0";
-        }
-        gps[(NSString *)kCGImagePropertyGPSAltitudeRef] = gpsAltitudeRef;
-        gps[(NSString *)kCGImagePropertyGPSAltitude] = @(altitude);
-    }
-    
-    return gps;
-}
+//
+////位置情報オブジェクトを取得する
+//- (NSDictionary *)GPSDictionaryForLocation:(CLLocation *)location
+//{
+//    NSMutableDictionary *gps = [NSMutableDictionary new];
+//    
+//    // 日付
+//    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[HomeViewController GPSDateFormatter] stringFromDate:location.timestamp];
+//    // タイムスタンプ
+//    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[HomeViewController GPSTimeFormatter] stringFromDate:location.timestamp];
+//    
+//    // 緯度
+//    CGFloat latitude = location.coordinate.latitude;
+//    NSString *gpsLatitudeRef;
+//    if (latitude < 0) {
+//        latitude = -latitude;
+//        gpsLatitudeRef = @"S";
+//    } else {
+//        gpsLatitudeRef = @"N";
+//    }
+//    gps[(NSString *)kCGImagePropertyGPSLatitudeRef] = gpsLatitudeRef;
+//    gps[(NSString *)kCGImagePropertyGPSLatitude] = @(latitude);
+//    
+//    // 経度
+//    CGFloat longitude = location.coordinate.longitude;
+//    NSString *gpsLongitudeRef;
+//    if (longitude < 0) {
+//        longitude = -longitude;
+//        gpsLongitudeRef = @"W";
+//    } else {
+//        gpsLongitudeRef = @"E";
+//    }
+//    gps[(NSString *)kCGImagePropertyGPSLongitudeRef] = gpsLongitudeRef;
+//    gps[(NSString *)kCGImagePropertyGPSLongitude] = @(longitude);
+//    
+//    // 標高
+//    CGFloat altitude = location.altitude;
+//    if (!isnan(altitude)){
+//        NSString *gpsAltitudeRef;
+//        if (altitude < 0) {
+//            altitude = -altitude;
+//            gpsAltitudeRef = @"1";
+//        } else {
+//            gpsAltitudeRef = @"0";
+//        }
+//        gps[(NSString *)kCGImagePropertyGPSAltitudeRef] = gpsAltitudeRef;
+//        gps[(NSString *)kCGImagePropertyGPSAltitude] = @(altitude);
+//    }
+//    
+//    return gps;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

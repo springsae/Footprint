@@ -14,6 +14,7 @@
 
 @interface MapViewController : UIViewController<MKMapViewDelegate>
 {
+    ALAssetsLibrary *_library;
     ALAsset *asset;
     NSArray *_assetsUrls;
     int _counter;
