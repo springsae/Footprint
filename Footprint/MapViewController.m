@@ -7,6 +7,9 @@
 //
 
 #import "MapViewController.h"
+#import "HomeViewController.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface MapViewController ()
 
@@ -132,7 +135,56 @@
     return nil;
 }
 
-
+//位置情報オブジェクトを取得する
+- (NSDictionary *)GPSDictionaryForLocation:(CLLocation *)location
+{
+    NSMutableDictionary *gps = [NSMutableDictionary new];
+    
+//    // 日付
+//    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[HomeViewController GPSDateFormatter] stringFromDate:location.timestamp];
+//    // タイムスタンプ
+//    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[HomeViewController GPSTimeFormatter] stringFromDate:location.timestamp];
+    
+    // 緯度
+    CGFloat latitude = location.coordinate.latitude;
+    NSString *gpsLatitudeRef;
+    if (latitude < 0) {
+        latitude = -latitude;
+        gpsLatitudeRef = @"S";
+    } else {
+        gpsLatitudeRef = @"N";
+    }
+    gps[(NSString *)kCGImagePropertyGPSLatitudeRef] = gpsLatitudeRef;
+    gps[(NSString *)kCGImagePropertyGPSLatitude] = @(latitude);
+    
+    // 経度
+    CGFloat longitude = location.coordinate.longitude;
+    NSString *gpsLongitudeRef;
+    if (longitude < 0) {
+        longitude = -longitude;
+        gpsLongitudeRef = @"W";
+    } else {
+        gpsLongitudeRef = @"E";
+    }
+    gps[(NSString *)kCGImagePropertyGPSLongitudeRef] = gpsLongitudeRef;
+    gps[(NSString *)kCGImagePropertyGPSLongitude] = @(longitude);
+    
+    // 標高
+    CGFloat altitude = location.altitude;
+    if (!isnan(altitude)){
+        NSString *gpsAltitudeRef;
+        if (altitude < 0) {
+            altitude = -altitude;
+            gpsAltitudeRef = @"1";
+        } else {
+            gpsAltitudeRef = @"0";
+        }
+        gps[(NSString *)kCGImagePropertyGPSAltitudeRef] = gpsAltitudeRef;
+        gps[(NSString *)kCGImagePropertyGPSAltitude] = @(altitude);
+    }
+    
+    return gps;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

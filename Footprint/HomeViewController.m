@@ -38,6 +38,8 @@
     
     
     
+    
+    
 //    //固定する
 //     _koteiViewCenter = [_koteiView center];
 //    
@@ -115,11 +117,42 @@
                       _img_x = 0;
                       _img_y = 40;
                       
+                      int marginwidth = self.view.bounds.size.width;
+                      
+                      marginwidth = marginwidth - 160*2;
+                      
+                      marginwidth = marginwidth / 3;
+                      
+                      _img_x = marginwidth;
+                      
                       if (_counter % 2 == 1) {
-                          _img_x = 160;
+                          _img_x = 160 + marginwidth*2;
                       }
                       
                       _img_y = 160 * (_counter / 2);
+                      
+//                      _img_x = 0;
+//                      _img_y = 0;
+//                      
+//                      if (_counter % 2 == 1) {
+//                          _img_x = 160;
+//                      }
+//                      
+//                      _img_y = 160 * (_counter / 2);
+//                      
+//                      int marginwidth = self.view.bounds.size.width;
+//                      
+//                      marginwidth = marginwidth - 160*2;
+//                      
+//                      marginwidth = marginwidth / 3;
+//                      
+//                      _img_x = marginwidth;
+//                      
+//                      if (_counter % 2 == 1) {
+//                          _img_x = 160 + marginwidth*2;
+//                      }
+//                      
+//                       _img_y = 160 * (_counter / 2);
                       
                       UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
                       
@@ -230,6 +263,15 @@
     //取り出して使用
     UIImage *fromCamera=[info objectForKey:UIImagePickerControllerOriginalImage];
     
+    //メタデータを含んだ静止画をカメラロールに保存
+    NSMutableDictionary *metadata = info[UIImagePickerControllerMediaMetadata];
+    ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+    [assetsLibrary writeImageToSavedPhotosAlbum:fromCamera.CGImage metadata:metadata completionBlock:^(NSURL *assetURL, NSError *error) {
+        if (error) {
+            NSLog(@"Save image failed. %@", error);
+        }
+    }];
+    
     //画面表示
     //[self.showImage setImage:fromCamera];
     
@@ -241,6 +283,14 @@
     
     //カメラライブラリから選んだ写真のURLを取得
     _assetsurl=[[info objectForKey:UIImagePickerControllerReferenceURL] absoluteString];
+    
+//    確認
+//    CGImageRef ref = CGImageCreateWithImageInRect(self.CGImage, croppedSquare);
+//    UIImage *originalImage = [UIImage imageWithCGImage:ref
+//                                                scale:[UIScreen mainScreen].scale
+//                                          orientation:self.imageOrientation];
+//    NSLog(@"Orientation(After):%@", [NSNumber numberWithInteger:originalImage.imageOrientation]);
+//    CGImageRelease(ref);
     
     //カメラが撮影したときだけ保存
     if (_assetsurl==nil){
