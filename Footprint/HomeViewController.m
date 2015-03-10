@@ -100,6 +100,16 @@
 
 -(void)showPhoto:(NSString *)url
 {
+//    NSLog(@"Orientation(Before):%@", [NSNumber numberWithInteger:self.imageOrientation]);
+//    CGRect croppedSquare = CGRectMake(x, y, length, length);
+//    CGImageRef ref = CGImageCreateWithImageInRect(self.CGImage, croppedSquare);
+//    
+//    UIImage *croppedImage = [UIImage imageWithCGImage:ref
+//                                                scale:[UIScreen mainScreen].scale
+//                                          orientation:self.imageOrientation];
+//    NSLog(@"Orientation(After):%@", [NSNumber numberWithInteger:croppedImage.imageOrientation]);
+//    
+//    CGImageRelease(ref);
     
     //URLからALAssetを取得
     [_library assetForURL:[NSURL URLWithString:url]
@@ -155,6 +165,9 @@
 //                       _img_y = 160 * (_counter / 2);
                       
                       UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+                      
+                      //画像を回転させないための処理　確認
+                      fullscreenImage =  [UIImage imageWithCGImage:fullscreenImage.CGImage scale:fullscreenImage.scale orientation:UIImageOrientationUp];
                       
                       UIImageView *imagev = [[UIImageView alloc]initWithFrame:CGRectMake(_img_x, _img_y, 160, 160)];
                       imagev.image = fullscreenImage;

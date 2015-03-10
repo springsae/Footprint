@@ -30,4 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *koteiView;
 
+//写真の回転を防ぐ
+@property (nonatomic,readonly) UIImageOrientation imageOrientation;
+
 @end

@@ -299,7 +299,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63v-CN-FU8">
                                 <rect key="frame" x="6" y="95" width="150" height="150"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="コメント" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="コメント" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
                                 <rect key="frame" x="13" y="282" width="295" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -404,8 +404,11 @@
                                 <exclude reference="UCQ-9L-KMy"/>
                                 <exclude reference="bUx-ux-SGE"/>
                                 <exclude reference="xa5-ov-5WG"/>
+                                <exclude reference="0er-uV-ch4"/>
+                                <exclude reference="BHw-fu-Uf2"/>
                                 <exclude reference="d0W-FK-1aC"/>
                                 <exclude reference="ed0-hl-RwK"/>
+                                <exclude reference="q1p-uY-sdN"/>
                             </mask>
                         </variation>
                     </view>
@@ -452,14 +455,14 @@
                         <viewControllerLayoutGuide type="top" id="H6y-1V-zKD"/>
                         <viewControllerLayoutGuide type="bottom" id="1te-gI-nTV"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qrQ-AV-u3q">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="qrQ-AV-u3q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-DB-5Ak">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-DB-5Ak">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-cj-BhE">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-cj-BhE">
                                         <rect key="frame" x="130" y="475" width="60" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -471,8 +474,35 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="leading" secondItem="GRh-DB-5Ak" secondAttribute="leadingMargin" constant="122" id="2y5-rr-m5H"/>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="leading" secondItem="GRh-DB-5Ak" secondAttribute="leading" constant="130" id="5uI-8r-Izh"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="bqY-cj-BhE" secondAttribute="bottom" constant="687" id="PiF-xO-NHA"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bqY-cj-BhE" secondAttribute="trailing" constant="122" id="TfT-rc-q7u"/>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="leading" secondItem="GRh-DB-5Ak" secondAttribute="leading" constant="130" id="UYP-mo-WJc"/>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="top" secondItem="GRh-DB-5Ak" secondAttribute="topMargin" constant="467" id="YF4-HV-3a1"/>
+                                    <constraint firstAttribute="bottom" secondItem="bqY-cj-BhE" secondAttribute="bottom" constant="695" id="i8Z-YO-y2T"/>
+                                    <constraint firstAttribute="trailing" secondItem="bqY-cj-BhE" secondAttribute="trailing" constant="130" id="md5-dC-tEl"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bqY-cj-BhE" secondAttribute="trailing" constant="122" id="mpF-zV-qI6"/>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="top" secondItem="GRh-DB-5Ak" secondAttribute="top" constant="475" id="n2R-H8-nXi"/>
+                                    <constraint firstAttribute="bottom" secondItem="bqY-cj-BhE" secondAttribute="bottom" constant="695" id="nsY-Ny-ULd"/>
+                                    <constraint firstItem="bqY-cj-BhE" firstAttribute="leading" secondItem="GRh-DB-5Ak" secondAttribute="leadingMargin" constant="122" id="pjz-aU-F8N"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2000" id="xdZ-wd-6US"/>
+                                    <constraint firstAttribute="trailing" secondItem="bqY-cj-BhE" secondAttribute="trailing" constant="130" id="zai-iy-My2"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2y5-rr-m5H"/>
+                                        <exclude reference="PiF-xO-NHA"/>
+                                        <exclude reference="TfT-rc-q7u"/>
+                                        <exclude reference="UYP-mo-WJc"/>
+                                        <exclude reference="YF4-HV-3a1"/>
+                                        <exclude reference="i8Z-YO-y2T"/>
+                                        <exclude reference="md5-dC-tEl"/>
+                                        <exclude reference="mpF-zV-qI6"/>
+                                        <exclude reference="nsY-Ny-ULd"/>
+                                        <exclude reference="pjz-aU-F8N"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <constraints>

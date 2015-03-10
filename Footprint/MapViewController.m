@@ -105,15 +105,17 @@
 //    [mapView addAnnotation:pin];
 //    
     
-    //要確認：exif情報を追加する
-    JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
-    thumbnail.image = [UIImage imageNamed:@"ayala.jpg"];
-//    thumbnail.title = @"Ayala Mall";
-//    thumbnail.subtitle = @"Biggest Shopping Mall in Cebu";
-    thumbnail.coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759);
-    thumbnail.disclosureBlock = ^{ NSLog(@"selected ayala"); };
+//    //要確認：exif情報を追加する
+//    JPSThumbnail *thumbnail = [[JPSThumbnail alloc] init];
+//    thumbnail.image = [UIImage imageNamed:@"ayala.jpg"];
+////    thumbnail.title = @"Ayala Mall";
+////    thumbnail.subtitle = @"Biggest Shopping Mall in Cebu";
+//    thumbnail.coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759);
+//    thumbnail.disclosureBlock = ^{ NSLog(@"selected ayala"); };
     
-    [mapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:thumbnail]];
+    for (NSString *url in _assetsUrls){
+        [self settingPin:url];
+    }
     
     //mapに表示させる
     [self.view addSubview:mapView];
@@ -121,61 +123,79 @@
     
 }
 
-////確認
-//-(void)settingPin:(NSString *)url　JPSThumbnail:(JPSThumbnail *)
-//{
-//    //URLからALAssetを取得
-//    [_library assetForURL:[NSURL URLWithString:url]
-//              resultBlock:^(ALAsset *asset)
-//
-//         
-//         //画像があればYES、無ければNOを返す
-//         if(asset)
-//         {
-//             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-//             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
-//             imageView.image = fullscreenImage;
-//
-//             //exifを取得する
-//             // raw data
-//             NSUInteger size = [assetRepresentation size];
-//             uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-//             if(buff != nil)
-//             {
-//                 NSError *error = nil;
-//                 NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-//                 if (bytesRead && !error)
-//                 {
-//                     NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-//                     
-//                     CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-//                     NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-//                     if (metadata)
-//                     {
-//                         label.text = metadata[@"{TIFF}"][@"DateTime"];
-//                         NSLog(@"%@", [metadata description]);
-//                     }
-//                     else
-//                     {
-//                         NSLog(@"no metadata");
-//                     }
-//                     
-//                 }
-//                 if (error)
-//                 {
-//                     NSLog(@"error:%@", error);
-//                     free(buff);
-//                 }
-//             }
-//             
-//         }
-//         else
-//         {
-//             NSLog(;"データがありません");
-//         }
-//         
-//     } failureBlock: nil];
-//}
+//確認
+-(void)settingPin:(NSString *)url
+{
+    //URLからALAssetを取得
+    [_library assetForURL:[NSURL URLWithString:url]
+              resultBlock:^(ALAsset *asset)
+     {
+
+         
+         //画像があればYES、無ければNOを返す
+         if(asset)
+         {
+            //ALAssetsRepresentationクラスのインスタンス作成
+            ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+             
+            //ALAssetsRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+            //fullscreenImageで元画像と同じ解像度の写真を取得する
+             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+             JPSThumbnail *jpsThumbnail = [[JPSThumbnail alloc] init];
+             
+             jpsThumbnail.image = fullscreenImage;
+             jpsThumbnail.subtitle = @"clickhere";
+             
+             
+             
+
+             //exifを取得する
+             // raw data
+             NSUInteger size = [assetRepresentation size];
+             uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+             if(buff != nil)
+             {
+                 NSError *error = nil;
+                 NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+                 if (bytesRead && !error)
+                 {
+                     NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+                     
+                     CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+                     NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+                     if (metadata)
+                     {
+                         jpsThumbnail.title = metadata[@"{TIFF}"][@"DateTime"];
+            
+                         NSLog(@"%@", [metadata description]);
+                         jpsThumbnail.disclosureBlock = ^{NSLog(@"selected");};
+                          jpsThumbnail.coordinate = CLLocationCoordinate2DMake([metadata[@"{GPS}"][@"Latitude"] doubleValue], [metadata[@"{GPS}"][@"Longitude"] doubleValue]);
+                        
+                        [mapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:jpsThumbnail]];
+                                                                               
+            
+                     }
+                     else
+                     {
+                         NSLog(@"no metadata");
+                     }
+                     
+                 }
+                 if (error)
+                 {
+                     NSLog(@"error:%@", error);
+                     free(buff);
+                 }
+             }
+             
+         }
+         else
+         {
+             NSLog(@"データがありません");
+         }
+         
+     } failureBlock: nil];
+}
 
 //- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 //    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {

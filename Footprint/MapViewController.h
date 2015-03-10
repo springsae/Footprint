@@ -18,6 +18,7 @@
     ALAsset *asset;
     NSArray *_assetsUrls;
     int _counter;
+    MKMapView *mapView;
 }
 
 @end
