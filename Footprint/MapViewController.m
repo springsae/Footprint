@@ -123,7 +123,7 @@
     
 }
 
-//確認
+//ピンをたてる
 -(void)settingPin:(NSString *)url
 {
     //URLからALAssetを取得
@@ -145,8 +145,6 @@
              
              jpsThumbnail.image = fullscreenImage;
              jpsThumbnail.subtitle = @"clickhere";
-             
-             
              
 
              //exifを取得する

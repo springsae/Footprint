@@ -282,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjW-vw-8dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="403" y="-225"/>
+            <point key="canvasLocation" x="159" y="-189"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="qyK-27-uFX">
@@ -297,7 +297,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63v-CN-FU8">
-                                <rect key="frame" x="6" y="95" width="150" height="150"/>
+                                <rect key="frame" x="6" y="97" width="150" height="150"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="コメント" translatesAutoresizingMaskIntoConstraints="NO" id="Fag-v7-NiZ">
                                 <rect key="frame" x="13" y="282" width="295" height="80"/>
@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skd-e0-4NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768" y="-225"/>
+            <point key="canvasLocation" x="703" y="-189"/>
         </scene>
         <!--map-->
         <scene sceneID="CNn-YC-DDA">

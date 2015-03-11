@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import <CoreLocation/CoreLocation.h>
+#import <ImageIO/ImageIO.h>
+#import "FormatterUtil.h"
 
 
 @interface HomeViewController : UIViewController
@@ -32,5 +34,7 @@
 
 //写真の回転を防ぐ
 @property (nonatomic,readonly) UIImageOrientation imageOrientation;
+
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end

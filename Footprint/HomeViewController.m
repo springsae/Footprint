@@ -11,6 +11,7 @@
 
 
 
+
 @interface HomeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate>
 {
     //assetsUrlを格納するインスタンス
@@ -35,6 +36,13 @@
     
     //スクロールする
     self.myScrollView.contentSize = CGSizeMake(320, 2000);
+    
+    if([CLLocationManager locationServicesEnabled]){
+        self.locationManager =[[CLLocationManager alloc] init];
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startUpdatingHeading];
+        
+    }
     
     
     
@@ -277,13 +285,13 @@
     UIImage *fromCamera=[info objectForKey:UIImagePickerControllerOriginalImage];
     
     //メタデータを含んだ静止画をカメラロールに保存
-    NSMutableDictionary *metadata = info[UIImagePickerControllerMediaMetadata];
-    ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-    [assetsLibrary writeImageToSavedPhotosAlbum:fromCamera.CGImage metadata:metadata completionBlock:^(NSURL *assetURL, NSError *error) {
-        if (error) {
-            NSLog(@"Save image failed. %@", error);
-        }
-    }];
+    NSMutableDictionary *metadata = [info[UIImagePickerControllerMediaMetadata] mutableCopy];
+//    ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+//    [assetsLibrary writeImageToSavedPhotosAlbum:fromCamera.CGImage metadata:metadata completionBlock:^(NSURL *assetURL, NSError *error) {
+//        if (error) {
+//            NSLog(@"Save image failed. %@", error);
+//        }
+//    }];
     
     //画面表示
     //[self.showImage setImage:fromCamera];
@@ -311,9 +319,16 @@
         //トリミング
         originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         
+        
+        //位置情報を上書き
+        if (self.locationManager) {
+            [metadata setObject:[self GPSDictionaryForLocation:self.locationManager.location] forKey:(NSString *)kCGImagePropertyGPSDictionary];
+        }
+        
+        
         //カメラのときのNRL取得
         //_library=[[ALAssetsLibrary alloc] init];
-        [_library writeImageToSavedPhotosAlbum:originalImage.CGImage orientation:(ALAssetOrientation)originalImage.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
+        [_library writeImageToSavedPhotosAlbum:originalImage.CGImage metadata:metadata completionBlock:^(NSURL *assetURL,NSError *error){
             if(error ){
                 NSLog(@"error");
             }else{
@@ -334,6 +349,57 @@
         
         
     }
+}
+
+//位置情報を取得
+- (NSDictionary *)GPSDictionaryForLocation:(CLLocation *)location
+{
+    NSMutableDictionary *gps = [NSMutableDictionary new];
+
+    // 日付
+    gps[(NSString *)kCGImagePropertyGPSDateStamp] = [[FormatterUtil GPSDateFormatter] stringFromDate:location.timestamp];
+    // タイムスタンプ
+    gps[(NSString *)kCGImagePropertyGPSTimeStamp] = [[FormatterUtil GPSTimeFormatter] stringFromDate:location.timestamp];
+
+    // 緯度
+    CGFloat latitude = location.coordinate.latitude;
+    NSString *gpsLatitudeRef;
+    if (latitude < 0) {
+        latitude = -latitude;
+        gpsLatitudeRef = @"S";
+    } else {
+        gpsLatitudeRef = @"N";
+    }
+    gps[(NSString *)kCGImagePropertyGPSLatitudeRef] = gpsLatitudeRef;
+    gps[(NSString *)kCGImagePropertyGPSLatitude] = @(latitude);
+
+    // 経度
+    CGFloat longitude = location.coordinate.longitude;
+    NSString *gpsLongitudeRef;
+    if (longitude < 0) {
+        longitude = -longitude;
+        gpsLongitudeRef = @"W";
+    } else {
+        gpsLongitudeRef = @"E";
+    }
+    gps[(NSString *)kCGImagePropertyGPSLongitudeRef] = gpsLongitudeRef;
+    gps[(NSString *)kCGImagePropertyGPSLongitude] = @(longitude);
+
+    // 標高
+    CGFloat altitude = location.altitude;
+    if (!isnan(altitude)){
+        NSString *gpsAltitudeRef;
+        if (altitude < 0) {
+            altitude = -altitude;
+            gpsAltitudeRef = @"1";
+        } else {
+            gpsAltitudeRef = @"0";
+        }
+        gps[(NSString *)kCGImagePropertyGPSAltitudeRef] = gpsAltitudeRef;
+        gps[(NSString *)kCGImagePropertyGPSAltitude] = @(altitude);
+    }
+
+    return gps;
 }
 
 // カメラで撮った画像を保存し終わったときに呼ばれるメソッド

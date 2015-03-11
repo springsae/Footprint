@@ -92,7 +92,7 @@
 -(void)showPhoto:(NSString *)url
 {
     //表示前にUserDefaultに保存
-    [self seveAssetsURL];
+    [self saveAssetsURL];
     
     //URLからALAssetを取得
     [_library assetForURL:[NSURL URLWithString:url]
@@ -263,7 +263,7 @@
 }
 
 //UserDefaultにassetsURLを保存
--(void)seveAssetsURL{
+-(void)saveAssetsURL{
     
     //UserDefaultObjectを用意する
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
