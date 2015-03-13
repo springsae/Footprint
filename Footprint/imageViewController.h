@@ -30,6 +30,29 @@
 @property (weak, nonatomic) IBOutlet UIButton *tapCallComment;
 @property (weak, nonatomic) IBOutlet UIPickerView *imageChangePicker;
 
+@property (weak, nonatomic) IBOutlet UIButton *vignette;
+@property (weak, nonatomic) IBOutlet UIButton *blackAndWhite;
+@property (weak, nonatomic) IBOutlet UIButton *saturation;
+@property (weak, nonatomic) IBOutlet UIButton *curve;
+
+@property (weak, nonatomic) IBOutlet UIButton *reset;
+
+
+- (IBAction)vignetteBtn:(id)sender;
+- (IBAction)blackAndWhiteBtn:(id)sender;
+- (IBAction)saturationBtn:(id)sender;
+- (IBAction)CurveBtn:(id)sender;
+- (IBAction)returnBtn:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelVignette;
+@property (weak, nonatomic) IBOutlet UILabel *labelBandW;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelSaturation;
+@property (weak, nonatomic) IBOutlet UILabel *labelCurve;
+@property (weak, nonatomic) IBOutlet UILabel *labelReset;
+
+
+
 //@interface imageViewController : UIViewController
 //{
 //    GPUImageStillCamera *stillCamera;

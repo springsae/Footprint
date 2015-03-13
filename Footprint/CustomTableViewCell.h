@@ -17,4 +17,6 @@
 //@property (weak, nonatomic) IBOutlet UILabel *CustomCellTime;
 @property (weak, nonatomic) IBOutlet UILabel *CustomCellTime;
 
+@property (nonatomic) CGFloat inset;
+
 @end

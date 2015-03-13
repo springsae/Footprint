@@ -30,10 +30,13 @@
         [self showPhoto:self.assetsurl];
     
     self.imageChangePicker.delegate = self;
-    _imageChangeArray = [NSArray arrayWithObjects:
-                      @"Saturation",@"B&W",@"Vignette",@"Vintage",@"Curve",nil];
+//    _imageChangeArray = [NSArray arrayWithObjects:
+//                      @"Saturation",@"B&W",@"Vignette",@"Vintage",@"Curve",nil];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    
+    
+
     
 }
 
@@ -45,6 +48,7 @@
     
     [self showPhoto:_assetsurl];
     
+    
     if (!_assetsurl)
     {
         UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
@@ -52,8 +56,14 @@
         self.showImage.image = originalImage;
     }
     
+//    UIGraphicsBeginImageContext(originalImage.size);
+//    [originalImage drawInRect:CGRectMake(0, 0, imageOriginal.size.width, imageOriginal.size.height)];
+//    originalImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
     
     [picker dismissViewControllerAnimated:YES completion:nil];  //元の画面に戻る
+    
+    
     
     
 
@@ -76,7 +86,9 @@
              
              //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
              //fullScreenImageで元画像と同じ解像度の写真を取得する。
+             
              UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+             
 //             [fullscreenImage setContentMode:UIViewContentModeScaleAspectFill];
              self.showImage.image = fullscreenImage; //イメージをセット
          }else
@@ -86,36 +98,36 @@
          
      } failureBlock: nil];
     
-}
+    }
 
 
-//横方向の個数を指定
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-// pickerViewの縦の長さを決める
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    int cnt = [_imageChangeArray count];
-    return cnt;
-}
-
-//ピッカービューの行のタイトルを返す
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [_imageChangeArray objectAtIndex:row];
-}
-
-
-//選択された行番号を取得
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
-    NSLog(@"%ld",(long)selectedRow);
-    
-}
+////横方向の個数を指定
+//- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+//{
+//    return 1;
+//}
+//
+//// pickerViewの縦の長さを決める
+//- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+//{
+//    int cnt = [_imageChangeArray count];
+//    return cnt;
+//}
+//
+////ピッカービューの行のタイトルを返す
+//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    return [_imageChangeArray objectAtIndex:row];
+//}
+//
+//
+////選択された行番号を取得
+//-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+//{
+//    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
+//    NSLog(@"%ld",(long)selectedRow);
+//    
+//}
 
 //pickerViewで選択した後の動作を指定
 
@@ -201,4 +213,18 @@
 }
 
 
+- (IBAction)vignetteBtn:(id)sender {
+}
+
+- (IBAction)blackAndWhiteBtn:(id)sender {
+}
+
+- (IBAction)saturationBtn:(id)sender {
+}
+
+- (IBAction)CurveBtn:(id)sender {
+}
+
+- (IBAction)returnBtn:(id)sender {
+}
 @end

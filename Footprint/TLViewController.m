@@ -129,13 +129,20 @@
     
 //    cell.backgroundColor = [UIColor clearColor];
     
+       return cell;
+    
     return cell;
     
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [cell setBackgroundColor:[UIColor clearColor]];
+    
+//   カスタムセル横幅調節　確認
+    CustomTableViewCell *iCell = (CustomTableViewCell *) cell;
+    iCell.inset = 9.0;
 
 }
 

@@ -10,6 +10,17 @@
 
 @implementation CustomTableViewCell
 
+
+
+//(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+//{
+//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+//    if (self) {
+//        // Initialization code
+//    }
+//    return self;
+//}
+
 + (CGFloat)rowHeight
 {
     return 80.0f;
@@ -24,7 +35,6 @@
 
     // Configure the view for the selected state
 }
-
 
 
 
