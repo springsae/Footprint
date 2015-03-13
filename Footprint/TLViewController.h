@@ -17,7 +17,7 @@
 {
     ALAssetsLibrary *_library;//ALAssetsLibraryのインスタンス
     NSArray *_assetsUrls;
-    ALAsset *asset;
+    ALAsset *Asset;
     
 //    int _img_x;
 //    int _img_y;

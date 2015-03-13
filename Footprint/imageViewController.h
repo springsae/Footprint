@@ -30,4 +30,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *tapCallComment;
 @property (weak, nonatomic) IBOutlet UIPickerView *imageChangePicker;
 
+//@interface imageViewController : UIViewController
+//{
+//    GPUImageStillCamera *stillCamera;
+//    GPUImageOutput<GPUImageInput> *filter, *secondFilter, *terminalFilter;
+//    UISlider *filterSettingsSlider;
+//    UIButton *photoCaptureButton;
+//    
+//    GPUImagePicture *memoryPressurePicture1, *memoryPressurePicture2;
+//}
+
 @end

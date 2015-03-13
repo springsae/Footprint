@@ -33,6 +33,8 @@
     _imageChangeArray = [NSArray arrayWithObjects:
                       @"Saturation",@"B&W",@"Vignette",@"Vintage",@"Curve",nil];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    
 }
 
 
@@ -46,11 +48,15 @@
     if (!_assetsurl)
     {
         UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+//        [originalImage setContentMode:UIViewContentModeScaleAspectFill];
         self.showImage.image = originalImage;
     }
     
     
     [picker dismissViewControllerAnimated:YES completion:nil];  //元の画面に戻る
+    
+    
+
 }
 
 //assetsから取得した画像を表示する
@@ -71,6 +77,7 @@
              //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
              //fullScreenImageで元画像と同じ解像度の写真を取得する。
              UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+//             [fullscreenImage setContentMode:UIViewContentModeScaleAspectFill];
              self.showImage.image = fullscreenImage; //イメージをセット
          }else
          {
@@ -80,6 +87,7 @@
      } failureBlock: nil];
     
 }
+
 
 //横方向の個数を指定
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -120,16 +128,16 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    if (_library ==nil)
-    {
-        _library = [[ALAssetsLibrary alloc]init];
-    }
-    
-    [self showPhoto:self.assetsurl];
-    
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    if (_library ==nil)
+//    {
+//        _library = [[ALAssetsLibrary alloc]init];
+//    }
+//    
+//    [self showPhoto:self.assetsurl];
+//    
+//}
 
 
 
@@ -145,41 +153,43 @@
 
 - (IBAction)tapBackCamera:(id)sender
 {
+//    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//
+//    [self.inputViewController dismissViewControllerAnimated:YES completion:nil];
+//    [[self.inputViewController navigationController] popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self.inputViewController dismissViewControllerAnimated:YES completion:nil];
-    
-    //    [[self.inputViewController navigationController] popViewControllerAnimated:YES];
-    //    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    UIImagePickerControllerSourceType sourceType;
-    
-    UIImagePickerController *ipc;
-    
-    sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    if (![UIImagePickerController isSourceTypeAvailable:sourceType])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"カメラを起動できません" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    ipc = [[UIImagePickerController alloc] init];
-    
-    [ipc setSourceType:sourceType];
-    
-    [ipc setDelegate:self];
-    
-    ipc.allowsEditing = YES;
-    
-    [self presentViewController:ipc animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//
+//    UIImagePickerControllerSourceType sourceType;
+//    
+//    UIImagePickerController *ipc;
+//    
+//    sourceType = UIImagePickerControllerSourceTypeCamera;
+//    
+//    if (![UIImagePickerController isSourceTypeAvailable:sourceType])
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"カメラを起動できません" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    
+//    ipc = [[UIImagePickerController alloc] init];
+//    
+//    [ipc setSourceType:sourceType];
+//    
+//    [ipc setDelegate:self];
+//    
+//    ipc.allowsEditing = YES;
+//    
+//    [self presentViewController:ipc animated:YES completion:nil];
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"キャンセル");
-}
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+//{
+//    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+//    NSLog(@"キャンセル");
+//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     

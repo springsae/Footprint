@@ -16,6 +16,7 @@
     ALAssetsLibrary *_library;
     NSArray *_categoryArray;
     NSMutableArray *_photolist;
+    NSString *_photoDateTime;
     
 }
 

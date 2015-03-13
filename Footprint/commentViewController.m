@@ -48,6 +48,9 @@
     [[self.commentText layer] setBorderColor:[[UIColor blackColor] CGColor]];
     [[self.commentText layer] setBorderWidth:1.0];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+
+    
     
 //    //textFieldを角丸にする
 //    [[self.textField layer] setCornerRadius:10.0];
@@ -69,6 +72,7 @@
 //    
 //    // UITextFieldのインスタンスをビューに追加
 //    [self.view addSubview:textField];
+
 
 }
 
@@ -110,12 +114,42 @@
              //fullScreenImageで元画像と同じ解像度の写真を取得する。
              UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
              self.smallImage.image = fullscreenImage; //イメージをセット
-         }else
-         {
-             NSLog(@"データがありません");
-      }
+             //exifを取得する
+             // raw data
+             NSUInteger size = [assetRepresentation size];
+             uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+             if(buff != nil)
+             {
+                 NSError *error = nil;
+                 NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+                 if (bytesRead && !error)
+                 {
+                     NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+                     
+                     CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+                     NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+                     if (metadata)
+                     {
+                            _photoData = metadata[@"{TIFF}"][@"DateTime"];
+//                         label.text = metadata[@"{TIFF}"][@"DateTime"];
+                         NSLog(@"%@", [metadata description]);
+                     }
+                     else
+                     {
+                         NSLog(@"no metadata");
+                     }
+                     
+                 }
+                 if (error) {
+                     NSLog(@"error:%@", error);
+                     free(buff);
+                 }
+             }else{
+                 NSLog(@"データがありません");
+             }
+         }
          
-     } failureBlock: nil];
+    } failureBlock: nil];
     
 }
 
@@ -219,8 +253,8 @@
 
 - (IBAction)tapBackImage:(id)sender
 {
-    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
-
+//    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -232,6 +266,25 @@
     [myDictionary setObject:_assetsurl forKey:@"photo"];
     [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
     [myDictionary setObject:_commentText.text forKey:@"comment"];
+    
+    if (!_photoDateTime){
+        _photoDateTime = @"";
+    
+    }else{
+        NSLog(@"%@",_photoDateTime);
+        
+        NSDateFormatter *DateFormatter =[[NSDateFormatter alloc] init];
+        [DateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
+        
+        //一旦日付型に変換
+        NSDate *photoDate = [DateFormatter dateFromString:_photoDateTime];
+        
+        //フォーマットをyyyy/MM/dd HH:mm　に変換して再代入
+        [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+        _photoDateTime = [DateFormatter stringFromDate:photoDate];
+    }
+    
+    [myDictionary setObject:_photoDateTime forKey:@"datetime"];
     
     //NSMutableArrayにdictionaryを挿入
     //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
@@ -259,6 +312,7 @@
 //    [self performSegueWithIdentifier:@"backToHome" sender:self];
     
     [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
     
 }
 

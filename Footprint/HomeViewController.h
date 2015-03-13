@@ -30,7 +30,7 @@
 
 - (IBAction)tapCallCamera:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIView *koteiView;
+//@property (weak, nonatomic) IBOutlet UIView *koteiView;
 
 //写真の回転を防ぐ
 @property (nonatomic,readonly) UIImageOrientation imageOrientation;

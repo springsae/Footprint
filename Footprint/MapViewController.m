@@ -72,13 +72,13 @@
 
     
     //MapViewオブジェクトを作成
-    MKMapView *mapView = [[MKMapView alloc] init];
+    MapView = [[MKMapView alloc] init];
     
     //delegate設定
-    mapView.delegate = self;
+    MapView.delegate = self;
     
     //大きさ、位置を設定
-    mapView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
+    MapView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
     
     //表示位置の中心を設定
     CLLocationCoordinate2D co;
@@ -87,19 +87,19 @@
     co.latitude = 10.317347; //緯度
     co.longitude = 123.905759; //経度
     
-    [mapView setCenterCoordinate:co];
+    [MapView setCenterCoordinate:co];
     
     //縮尺を設定
-    MKCoordinateRegion cr = mapView.region;
+    MKCoordinateRegion cr = MapView.region;
     cr.span.latitudeDelta = 50; //数字を小さくすると、詳細な地図（範囲が狭い）になる
     cr.span.longitudeDelta = 50;
     cr.center = co;
-    [mapView setRegion:cr];
+    [MapView setRegion:cr];
     
     //地図の表示種類設定
-    mapView.mapType = MKMapTypeStandard;
+    MapView.mapType = MKMapTypeStandard;
     //現在地を表示
-    mapView.showsUserLocation = YES;
+    MapView.showsUserLocation = YES;
 //    
 //    MKPointAnnotation *pin = [self createdPin:co Title:@"アヤラ" Subutitle:@"Biggest Shopping Mall in Cebu"];
 //    [mapView addAnnotation:pin];
@@ -118,9 +118,10 @@
     }
     
     //mapに表示させる
-    [self.view addSubview:mapView];
+    [self.view addSubview:MapView];
     
-    
+//     [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
 }
 
 //ピンをたてる
@@ -131,7 +132,6 @@
               resultBlock:^(ALAsset *asset)
      {
 
-         
          //画像があればYES、無ければNOを返す
          if(asset)
          {
@@ -169,7 +169,7 @@
                          jpsThumbnail.disclosureBlock = ^{NSLog(@"selected");};
                           jpsThumbnail.coordinate = CLLocationCoordinate2DMake([metadata[@"{GPS}"][@"Latitude"] doubleValue], [metadata[@"{GPS}"][@"Longitude"] doubleValue]);
                         
-                        [mapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:jpsThumbnail]];
+                        [MapView addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:jpsThumbnail]];
                                                                                
             
                      }

@@ -90,8 +90,16 @@
     {
         _library = [[ALAssetsLibrary alloc]init];
     }
+    
+//   [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    UIImage *backgroundImage = [UIImage imageNamed:@"sky_BG4_usui.jpg"];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 
 }
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -108,7 +116,7 @@
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     //要確認
-    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+    ALAssetRepresentation *assetRepresentation = [Asset defaultRepresentation];
     UIImage *returnfullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
     cell.CustomCellImage.image = returnfullscreenImage;
     
@@ -119,8 +127,16 @@
     cell.CustomCellText.text = rowDictionary[@"comment"];
     [self showPhoto:rowDictionary[@"photo"] ImageView:cell.CustomCellImage Label:cell.CustomCellTime];
     
+//    cell.backgroundColor = [UIColor clearColor];
+    
     return cell;
     
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -203,6 +219,8 @@
                   
     } failureBlock: nil];
 }
+
+
 
 
 //-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

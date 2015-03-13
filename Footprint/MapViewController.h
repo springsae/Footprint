@@ -15,10 +15,10 @@
 @interface MapViewController : UIViewController<MKMapViewDelegate>
 {
     ALAssetsLibrary *_library;
-    ALAsset *asset;
+    ALAsset *Asset;
     NSArray *_assetsUrls;
     int _counter;
-    MKMapView *mapView;
+    MKMapView *MapView;
 }
 
 @end

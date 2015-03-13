@@ -16,8 +16,9 @@
 {
     //assetsUrlを格納するインスタンス
     NSString *_assetsurl;
-
-    //    CGPoint _koteiViewCenter;
+    
+    UIView *_koteiView;
+    CGPoint _koteiViewCenter;
 }
 
 
@@ -36,6 +37,7 @@
     
     //スクロールする
     self.myScrollView.contentSize = CGSizeMake(320, 2000);
+    self.myScrollView.delegate = self;
     
     if([CLLocationManager locationServicesEnabled]){
         self.locationManager =[[CLLocationManager alloc] init];
@@ -44,7 +46,24 @@
         
     }
     
+    //固定ビューの初期化
+    _koteiView =[UIView new];
     
+    //配置
+    _koteiView.frame = CGRectMake(self.view.bounds.size.width/2-25,self.view.bounds.size.height-100,50,50);
+    _koteiView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0 alpha:0];
+    
+    //ボタンを作成
+    UIButton *cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    cameraBtn.frame = CGRectMake(0, 0, 50, 50);
+    [cameraBtn setImage:[UIImage imageNamed:@"cameraIcon48"] forState:UIControlStateNormal];
+    [_koteiView addSubview:cameraBtn];
+    
+    //ボタンがタップされた時に呼ばれるメソッドの設定
+    [cameraBtn  addTarget:self action:@selector(tapCallCamera:) forControlEvents:UIControlEventTouchUpInside];
+    _koteiViewCenter = [_koteiView center];
+    
+//    [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
     
     
     
@@ -89,6 +108,22 @@
 //    
 //    [self.view addSubview:imagev7];
     
+    
+    self.view.frame = CGRectMake(0, 40, 320, 1200);
+//    
+//    UIGraphicsBeginImageContext(self.view.frame.size);
+//    [[UIImage imageNamed:@"sky_BG4_usui.jpg"] drawInRect:self.view.bounds];
+//    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
     //UserDefaultObjectを用意する
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -101,9 +136,7 @@
         [self showPhoto:assetsURL];
     }
     
-    
-    self.view.frame = CGRectMake(0, 40, 320, 1200);
-    
+
 }
 
 -(void)showPhoto:(NSString *)url
@@ -183,6 +216,8 @@
                       [self.view addSubview:imagev];
                       _counter++;
                       
+                      [self.view bringSubviewToFront:_koteiView];
+                      
                   }else{
                       NSLog(@"データがありません");
                   }
@@ -192,14 +227,14 @@
 
 
 
-////viewの表示位置を固定する
-//-(void)scrollViewDidScroll:(UIScrollView*)scrollView
-//{
-//    CGPoint contentOffset = [scrollView contentOffset];
-//    CGPoint newCenter = CGPointMake(_koteiViewCenter.x + contentOffset.x,
-//                                    _koteiViewCenter.y + contentOffset.y);
-//    [_koteiView setCenter:newCenter];
-//}
+//viewの表示位置を固定する
+-(void)scrollViewDidScroll:(UIScrollView*)scrollView
+{
+    CGPoint contentOffset = [scrollView contentOffset];
+    CGPoint newCenter = CGPointMake(_koteiViewCenter.x + contentOffset.x,
+                                    _koteiViewCenter.y + contentOffset.y);
+    [_koteiView setCenter:newCenter];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -400,6 +435,12 @@
     }
 
     return gps;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [self.view addSubview:_koteiView];
+    
 }
 
 // カメラで撮った画像を保存し終わったときに呼ばれるメソッド
