@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 //#import "GPUImage.h"
+#import "UIImage+Filters.h"
 
 
 
@@ -18,6 +19,9 @@
     NSString *_assetsUrl; //assetsUrlを格納するインスタンス
     ALAssetsLibrary *_library;
     NSArray *_imageChangeArray;
+    UIImage *_originalImage;
+    
+    
 }
 
 
@@ -50,6 +54,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelSaturation;
 @property (weak, nonatomic) IBOutlet UILabel *labelCurve;
 @property (weak, nonatomic) IBOutlet UILabel *labelReset;
+
+
 
 
 

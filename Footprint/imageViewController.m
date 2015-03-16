@@ -29,7 +29,7 @@
         
         [self showPhoto:self.assetsurl];
     
-    self.imageChangePicker.delegate = self;
+//    self.imageChangePicker.delegate = self;
 //    _imageChangeArray = [NSArray arrayWithObjects:
 //                      @"Saturation",@"B&W",@"Vignette",@"Vintage",@"Curve",nil];
     
@@ -91,6 +91,8 @@
              
 //             [fullscreenImage setContentMode:UIViewContentModeScaleAspectFill];
              self.showImage.image = fullscreenImage; //イメージをセット
+             _originalImage = fullscreenImage;
+             
          }else
          {
              NSLog(@"データがありません");
@@ -214,17 +216,24 @@
 
 
 - (IBAction)vignetteBtn:(id)sender {
+    self.showImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
+    
 }
 
 - (IBAction)blackAndWhiteBtn:(id)sender {
+    self.showImage.image = [_originalImage saturateImage:0 withContrast:1.05];
 }
 
 - (IBAction)saturationBtn:(id)sender {
+    self.showImage.image = [_originalImage saturateImage:1.7 withContrast:1];
 }
 
 - (IBAction)CurveBtn:(id)sender {
+    self.showImage.image = [_originalImage curveFilter];
 }
 
-- (IBAction)returnBtn:(id)sender {
-}
+//- (IBAction)returnBtn:(id)sender {
+//    [self.myPhoto setImage:self.originalImage];
+//    
+//}
 @end

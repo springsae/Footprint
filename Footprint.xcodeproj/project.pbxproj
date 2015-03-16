@@ -50,6 +50,7 @@
 		E7A2961B1AA882C4003A1FCC /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A296181AA882C4003A1FCC /* commentViewController.m */; };
 		E7A2961C1AA882C4003A1FCC /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A2961A1AA882C4003A1FCC /* CustomTableViewCell.m */; };
 		E7A2961F1AA883C8003A1FCC /* TableViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A2961E1AA883C7003A1FCC /* TableViewConst.m */; };
+		E7ABFB1F1AB6A1C100245A76 /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ABFB1E1AB6A1C100245A76 /* UIImage+Filters.m */; };
 		E7F803361AA88A64000B2FCB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F803351AA88A64000B2FCB /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,8 @@
 		E7A2961A1AA882C4003A1FCC /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		E7A2961D1AA883C7003A1FCC /* TableViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewConst.h; sourceTree = "<group>"; };
 		E7A2961E1AA883C7003A1FCC /* TableViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewConst.m; sourceTree = "<group>"; };
+		E7ABFB1D1AB6A1C100245A76 /* UIImage+Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Filters.h"; sourceTree = "<group>"; };
+		E7ABFB1E1AB6A1C100245A76 /* UIImage+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Filters.m"; sourceTree = "<group>"; };
 		E7F803351AA88A64000B2FCB /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +249,8 @@
 		E7A295DB1AA87E57003A1FCC /* Footprint */ = {
 			isa = PBXGroup;
 			children = (
+				E7ABFB1D1AB6A1C100245A76 /* UIImage+Filters.h */,
+				E7ABFB1E1AB6A1C100245A76 /* UIImage+Filters.m */,
 				E72C36F91AB00CCD00F290BE /* FormatterUtil.h */,
 				E72C36FA1AB00CCD00F290BE /* FormatterUtil.m */,
 				E7A296171AA882C4003A1FCC /* commentViewController.h */,
@@ -487,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E72C36FB1AB00CCD00F290BE /* FormatterUtil.m in Sources */,
+				E7ABFB1F1AB6A1C100245A76 /* UIImage+Filters.m in Sources */,
 				E7A296151AA88271003A1FCC /* imageViewController.m in Sources */,
 				E7A295E51AA87E57003A1FCC /* ViewController.m in Sources */,
 				E7A296101AA88223003A1FCC /* TLViewController.m in Sources */,
