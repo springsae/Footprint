@@ -33,65 +33,19 @@
     _counter = 0;
     
     
-
-//    for (NSString *assetsURL in assetsURL) {
-//        [self showPhoto:assetsURL];
-//    }
-    
     // デリゲートメソッドをこのクラスで実装する
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    
-    //テーブルに表示したいデータソースをセット
-    
-    
 
     // カスタマイズしたセルをテーブルビューにセット
     UINib *nib = [UINib nibWithNibName:CustomTableViewCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
     
-//    
-//    //------- exifを取得する --------
-//    // raw data
-//    //ALAssetRepresentationクラスのインスタンスの作成
-//    ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-//    NSUInteger size = [assetRepresentation size];
-//    uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-//    if(buff != nil)
-//    {
-//        NSError *error = nil;
-//        NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-//        if (bytesRead && !error)
-//        {
-//            NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-//            
-//            CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-//            NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-//            if (metadata)
-//            {
-//                NSLog(@"%@", [metadata description]);
-//            }
-//            else
-//            {
-//                NSLog(@"no metadata");
-//            }
-//            
-//        }
-//        if (error)
-//        {
-//            NSLog(@"error:%@", error);
-//            free(buff);
-//        }
-//        
-//    }
 
     if (_library ==nil)
     {
         _library = [[ALAssetsLibrary alloc]init];
     }
-    
-//   [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
     UIImage *backgroundImage = [UIImage imageNamed:@"sky_BG4_usui.jpg"];
@@ -125,6 +79,7 @@
     
     NSDictionary *rowDictionary = _assetsUrls[indexPath.row];
     cell.CustomCellText.text = rowDictionary[@"comment"];
+    cell.CustomCellTime.text = rowDictionary[@"datetime"];
     [self showPhoto:rowDictionary[@"photo"] ImageView:cell.CustomCellImage Label:cell.CustomCellTime];
     
 //    cell.backgroundColor = [UIColor clearColor];
@@ -152,15 +107,15 @@
 }
 
 
-// Cell が選択された時
+// Cell が選択された時 確認
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath*) indexPath
 {
-    [self performSegueWithIdentifier:@"backToComment" sender:self];
+    [self performSegueWithIdentifier:@"sharePage" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"backToComment"])
+    if ([[segue identifier] isEqualToString:@"sharePage"])
     {
         TLViewController *tvc = (TLViewController*)[segue destinationViewController];
         // 移行先の ViewController に画像名を渡す
@@ -183,52 +138,45 @@
         {
             NSLog(@"データがあります");
             //ALAssetRepresentationクラスのインスタンスの作成
-            ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-            UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
-            imageView.image = fullscreenImage;
+//            ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+//            UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+//            imageView.image = fullscreenImage;
             
-            //exifを取得する
-            // raw data
-            NSUInteger size = [assetRepresentation size];
-            uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
-            if(buff != nil)
-            {
-                NSError *error = nil;
-                NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
-                if (bytesRead && !error)
-                {
-                    NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
-                    
-                    CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
-                    NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
-                    if (metadata)
-                    {
-                        label.text = metadata[@"{TIFF}"][@"DateTime"];
-                        NSLog(@"%@", [metadata description]);
-                    }
-                    else
-                    {
-                        NSLog(@"no metadata");
-                    }
-                    
-                }
-                if (error) {
-                    NSLog(@"error:%@", error);
-                    free(buff);
-                }
-            }
+            UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
+            imageView.image = thumbnail;
+    
             
-           }
-           else
-          {
+        }
+        else
+        {
             NSLog(@"データがありません");
-          }
+        }
                   
     } failureBlock: nil];
 }
 
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    //UserDefaultObjectを用意する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //一旦配列に取り出す
+    _assetsUrls = [defaults objectForKey:@"photoData"];
+    
+    //撮影順に並べる
+    NSSortDescriptor *sortDiscNumber = [[NSSortDescriptor alloc] initWithKey:@"datetime" ascending:NO];
+    
+    NSArray *sortArray = [NSArray arrayWithObjects:sortDiscNumber, nil];
+    
+    _assetsUrls = [_assetsUrls sortedArrayUsingDescriptors:sortArray];
+    
+    [self.tableView reloadData];
+    
+    
+    
+    
+    
+}
 
 //-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //{

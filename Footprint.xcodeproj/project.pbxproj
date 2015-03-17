@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5E67AFCCEDB0485D6DB8DD8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7900792C989D3216B2BADF34 /* libPods.a */; };
+		E7293F441AB8045F0002CB1F /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7293F431AB8045F0002CB1F /* ShareViewController.m */; };
 		E72C36E51AAEDD8000F290BE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36E41AAEDD8000F290BE /* CoreMedia.framework */; };
 		E72C36E71AAEDD8E00F290BE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36E61AAEDD8E00F290BE /* CoreVideo.framework */; };
 		E72C36E91AAEDD9A00F290BE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36E81AAEDD9A00F290BE /* OpenGLES.framework */; };
@@ -82,6 +83,8 @@
 		21AC98725224CB663AC47C5F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7900792C989D3216B2BADF34 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3E32EE6B4CDBF9DC79EEAE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E7293F421AB8045F0002CB1F /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		E7293F431AB8045F0002CB1F /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		E72C36E41AAEDD8000F290BE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E72C36E61AAEDD8E00F290BE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E72C36E81AAEDD9A00F290BE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -265,6 +268,8 @@
 				E7A2960C1AA88223003A1FCC /* HomeViewController.m */,
 				E7A2960D1AA88223003A1FCC /* TLViewController.h */,
 				E7A2960E1AA88223003A1FCC /* TLViewController.m */,
+				E7293F421AB8045F0002CB1F /* ShareViewController.h */,
+				E7293F431AB8045F0002CB1F /* ShareViewController.m */,
 				E7A295E01AA87E57003A1FCC /* AppDelegate.h */,
 				E7A295E11AA87E57003A1FCC /* AppDelegate.m */,
 				E7A295E31AA87E57003A1FCC /* ViewController.h */,
@@ -501,6 +506,7 @@
 				E7A2961F1AA883C8003A1FCC /* TableViewConst.m in Sources */,
 				E7A2961C1AA882C4003A1FCC /* CustomTableViewCell.m in Sources */,
 				E7A295DF1AA87E57003A1FCC /* main.m in Sources */,
+				E7293F441AB8045F0002CB1F /* ShareViewController.m in Sources */,
 				E7A2960F1AA88223003A1FCC /* HomeViewController.m in Sources */,
 				E7A296161AA88271003A1FCC /* MapViewController.m in Sources */,
 			);

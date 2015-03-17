@@ -63,52 +63,6 @@
     [cameraBtn  addTarget:self action:@selector(tapCallCamera:) forControlEvents:UIControlEventTouchUpInside];
     _koteiViewCenter = [_koteiView center];
     
-//    [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
-    
-    
-    
-//    //固定する
-//     _koteiViewCenter = [_koteiView center];
-//    
-//    
-//    UIImage *image = [UIImage imageNamed:@"preview.jpg"];
-//    
-//    UIImageView *imagev = [[UIImageView alloc]initWithFrame:CGRectMake(0, 40, 160, 160)];
-//    imagev.image = image;
-//    
-//    [self.view addSubview:imagev];
-//    
-//    UIImageView *imagev2 = [[UIImageView alloc]initWithFrame:CGRectMake(160, 40, 160, 160)];
-//    imagev2.image = image;
-//    
-//    [self.view addSubview:imagev2];
-//    
-//    UIImageView *imagev3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 200, 160, 160)];
-//    imagev3.image = image;
-//    
-//    [self.view addSubview:imagev3];
-//    
-//    UIImageView *imagev4 = [[UIImageView alloc]initWithFrame:CGRectMake(160, 200, 160, 160)];
-//    imagev4.image = image;
-//    
-//    [self.view addSubview:imagev4];
-//    
-//    UIImageView *imagev5 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 360 , 160, 160)];
-//    imagev5.image = image;
-//    
-//    [self.view addSubview:imagev5];
-    
-//    UIImageView *imagev6 = [[UIImageView alloc]initWithFrame:CGRectMake(160, 360 , 160, 160)];
-//    imagev6.image = image;
-//    
-//    [self.view addSubview:imagev6];
-//    
-//    UIImageView *imagev7 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 520, 160, 160)];
-//    imagev7.image = image;
-//    
-//    [self.view addSubview:imagev7];
-    
-    
     self.view.frame = CGRectMake(0, 40, 320, 1200);
 //    
 //    UIGraphicsBeginImageContext(self.view.frame.size);
@@ -118,6 +72,8 @@
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    
+   
     
     
 }
@@ -141,17 +97,6 @@
 
 -(void)showPhoto:(NSString *)url
 {
-//    NSLog(@"Orientation(Before):%@", [NSNumber numberWithInteger:self.imageOrientation]);
-//    CGRect croppedSquare = CGRectMake(x, y, length, length);
-//    CGImageRef ref = CGImageCreateWithImageInRect(self.CGImage, croppedSquare);
-//    
-//    UIImage *croppedImage = [UIImage imageWithCGImage:ref
-//                                                scale:[UIScreen mainScreen].scale
-//                                          orientation:self.imageOrientation];
-//    NSLog(@"Orientation(After):%@", [NSNumber numberWithInteger:croppedImage.imageOrientation]);
-//    
-//    CGImageRelease(ref);
-    
     //URLからALAssetを取得
     [_library assetForURL:[NSURL URLWithString:url]
               resultBlock:^(ALAsset *asset) {
@@ -182,36 +127,15 @@
                       
                       _img_y = 160 * (_counter / 2);
                       
-//                      _img_x = 0;
-//                      _img_y = 0;
-//                      
-//                      if (_counter % 2 == 1) {
-//                          _img_x = 160;
-//                      }
-//                      
-//                      _img_y = 160 * (_counter / 2);
-//                      
-//                      int marginwidth = self.view.bounds.size.width;
-//                      
-//                      marginwidth = marginwidth - 160*2;
-//                      
-//                      marginwidth = marginwidth / 3;
-//                      
-//                      _img_x = marginwidth;
-//                      
-//                      if (_counter % 2 == 1) {
-//                          _img_x = 160 + marginwidth*2;
-//                      }
-//                      
-//                       _img_y = 160 * (_counter / 2);
+//                      UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
                       
-                      UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
-                      
+                      UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
+                    
                       //画像を回転させないための処理　確認
-                      fullscreenImage =  [UIImage imageWithCGImage:fullscreenImage.CGImage scale:fullscreenImage.scale orientation:UIImageOrientationUp];
+                      thumbnail =  [UIImage imageWithCGImage:thumbnail.CGImage scale:thumbnail.scale orientation:UIImageOrientationUp];
                       
                       UIImageView *imagev = [[UIImageView alloc]initWithFrame:CGRectMake(_img_x, _img_y, 160, 160)];
-                      imagev.image = fullscreenImage;
+                      imagev.image = thumbnail;
                       
                       [self.view addSubview:imagev];
                       _counter++;

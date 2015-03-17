@@ -140,10 +140,12 @@
              
             //ALAssetsRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
             //fullscreenImageで元画像と同じ解像度の写真を取得する
-             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+//             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
+             
+             UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
              JPSThumbnail *jpsThumbnail = [[JPSThumbnail alloc] init];
              
-             jpsThumbnail.image = fullscreenImage;
+             jpsThumbnail.image = thumbnail;
              jpsThumbnail.subtitle = @"clickhere";
              
 

@@ -13,7 +13,7 @@
 #import "commentViewController.h"
 
 
-@interface TLViewController : UIViewController
+@interface TLViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
     ALAssetsLibrary *_library;//ALAssetsLibraryのインスタンス
     NSArray *_assetsUrls;

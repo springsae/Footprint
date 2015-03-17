@@ -99,39 +99,7 @@
          }
          
      } failureBlock: nil];
-    
-    }
-
-
-////横方向の個数を指定
-//- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-//{
-//    return 1;
-//}
-//
-//// pickerViewの縦の長さを決める
-//- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-//{
-//    int cnt = [_imageChangeArray count];
-//    return cnt;
-//}
-//
-////ピッカービューの行のタイトルを返す
-//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-//{
-//    return [_imageChangeArray objectAtIndex:row];
-//}
-//
-//
-////選択された行番号を取得
-//-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-//{
-//    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
-//    NSLog(@"%ld",(long)selectedRow);
-//    
-//}
-
-//pickerViewで選択した後の動作を指定
+}
 
 
 
@@ -141,18 +109,6 @@
     // Dispose of any resources that can be recreated.
     
 }
-
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    if (_library ==nil)
-//    {
-//        _library = [[ALAssetsLibrary alloc]init];
-//    }
-//    
-//    [self showPhoto:self.assetsurl];
-//    
-//}
-
 
 
 /*
@@ -231,7 +187,7 @@
 - (IBAction)CurveBtn:(id)sender {
     self.showImage.image = [_originalImage curveFilter];
 }
-
+//
 //- (IBAction)returnBtn:(id)sender {
 //    [self.myPhoto setImage:self.originalImage];
 //    
