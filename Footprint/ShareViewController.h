@@ -10,6 +10,12 @@
 #import "TLViewController.h"
 
 @interface ShareViewController : UIViewController
+{
+    NSString *_assetsUrl; //assetsUrlを格納するインスタンス
+    ALAssetsLibrary *_library;
+    UIImage *_originalImage;
+    NSMutableArray *_photolist;
+}
 
 @property (weak, nonatomic) IBOutlet UITextView *shareComment;
 @property (weak, nonatomic) IBOutlet UIImageView *shareImage;
@@ -17,5 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backTL;
 - (IBAction)tapShare:(id)sender;
+
+@property (nonatomic,assign) NSString *assetsurl;
 
 @end

@@ -113,18 +113,8 @@
     [self performSegueWithIdentifier:@"sharePage" sender:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"sharePage"])
-    {
-        TLViewController *tvc = (TLViewController*)[segue destinationViewController];
-        // 移行先の ViewController に画像名を渡す
-        tvc.assetsurl = self.assetsurl;
-    }
 
-}
 
-//
 -(void)showPhoto:(NSString *)url ImageView:(UIImageView *)imageView Label:(UILabel *)label
 {
     
@@ -174,9 +164,8 @@
     
     
     
-    
-    
 }
+
 
 //-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //{

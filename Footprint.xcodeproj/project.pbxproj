@@ -18,16 +18,10 @@
 		E72C36F31AB00AF600F290BE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36F21AB00AF500F290BE /* ImageIO.framework */; };
 		E72C36F81AB00B0000F290BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36F71AB00B0000F290BE /* CoreLocation.framework */; };
 		E72C36FB1AB00CCD00F290BE /* FormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C36FA1AB00CCD00F290BE /* FormatterUtil.m */; };
-		E72C370B1AB16CAD00F290BE /* cameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C370A1AB16CAD00F290BE /* cameraIcon.png */; };
 		E72C371B1AB17C1300F290BE /* cameraIcon48.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C370E1AB17C1300F290BE /* cameraIcon48.png */; };
-		E72C371C1AB17C1300F290BE /* cameraIcon64.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C370F1AB17C1300F290BE /* cameraIcon64.png */; };
-		E72C373D1AB1DD3E00F290BE /* sky_BG3_usui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E72C373C1AB1DD3E00F290BE /* sky_BG3_usui.jpg */; };
 		E72C373F1AB1DE4900F290BE /* sky_BG4_usui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */; };
 		E72C37481AB1E6CC00F290BE /* earth_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37421AB1E6CC00F290BE /* earth_blue.png */; };
 		E72C37491AB1E6CC00F290BE /* home_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37431AB1E6CC00F290BE /* home_blue.png */; };
-		E72C374A1AB1E6CC00F290BE /* left_arrow_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37441AB1E6CC00F290BE /* left_arrow_blue.png */; };
-		E72C374B1AB1E6CC00F290BE /* right_arrow_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37451AB1E6CC00F290BE /* right_arrow_blue.png */; };
-		E72C374C1AB1E6CC00F290BE /* save_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37461AB1E6CC00F290BE /* save_blue.png */; };
 		E72C374D1AB1E6CC00F290BE /* TL_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37471AB1E6CC00F290BE /* TL_blue.png */; };
 		E72C37511AB1E8CB00F290BE /* linea-arrows-10_e03f(1)_48.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C374E1AB1E8CB00F290BE /* linea-arrows-10_e03f(1)_48.png */; };
 		E72C37521AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C374F1AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png */; };
@@ -96,16 +90,10 @@
 		E72C36F91AB00CCD00F290BE /* FormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatterUtil.h; sourceTree = "<group>"; };
 		E72C36FA1AB00CCD00F290BE /* FormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatterUtil.m; sourceTree = "<group>"; };
 		E72C36FC1AB025D100F290BE /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GPUImage.xcodeproj; sourceTree = "<group>"; };
-		E72C370A1AB16CAD00F290BE /* cameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIcon.png; sourceTree = "<group>"; };
 		E72C370E1AB17C1300F290BE /* cameraIcon48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIcon48.png; sourceTree = "<group>"; };
-		E72C370F1AB17C1300F290BE /* cameraIcon64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIcon64.png; sourceTree = "<group>"; };
-		E72C373C1AB1DD3E00F290BE /* sky_BG3_usui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky_BG3_usui.jpg; sourceTree = "<group>"; };
 		E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky_BG4_usui.jpg; sourceTree = "<group>"; };
 		E72C37421AB1E6CC00F290BE /* earth_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth_blue.png; sourceTree = "<group>"; };
 		E72C37431AB1E6CC00F290BE /* home_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_blue.png; sourceTree = "<group>"; };
-		E72C37441AB1E6CC00F290BE /* left_arrow_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_blue.png; sourceTree = "<group>"; };
-		E72C37451AB1E6CC00F290BE /* right_arrow_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow_blue.png; sourceTree = "<group>"; };
-		E72C37461AB1E6CC00F290BE /* save_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_blue.png; sourceTree = "<group>"; };
 		E72C37471AB1E6CC00F290BE /* TL_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TL_blue.png; sourceTree = "<group>"; };
 		E72C374E1AB1E8CB00F290BE /* linea-arrows-10_e03f(1)_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linea-arrows-10_e03f(1)_48.png"; sourceTree = "<group>"; };
 		E72C374F1AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linea-arrows-10_e04b(0)_48.png"; sourceTree = "<group>"; };
@@ -213,15 +201,9 @@
 				E72C37501AB1E8CB00F290BE /* linea-basic-elaboration-10_66(2)_48.png */,
 				E72C37421AB1E6CC00F290BE /* earth_blue.png */,
 				E72C37431AB1E6CC00F290BE /* home_blue.png */,
-				E72C37441AB1E6CC00F290BE /* left_arrow_blue.png */,
-				E72C37451AB1E6CC00F290BE /* right_arrow_blue.png */,
-				E72C37461AB1E6CC00F290BE /* save_blue.png */,
 				E72C37471AB1E6CC00F290BE /* TL_blue.png */,
 				E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */,
-				E72C373C1AB1DD3E00F290BE /* sky_BG3_usui.jpg */,
 				E72C370E1AB17C1300F290BE /* cameraIcon48.png */,
-				E72C370F1AB17C1300F290BE /* cameraIcon64.png */,
-				E72C370A1AB16CAD00F290BE /* cameraIcon.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -428,22 +410,16 @@
 				E72C37521AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png in Resources */,
 				E74D97511AB2D06E0062650D /* sarutation.png in Resources */,
 				E7A295E81AA87E57003A1FCC /* Main.storyboard in Resources */,
-				E72C373D1AB1DD3E00F290BE /* sky_BG3_usui.jpg in Resources */,
 				E7A295ED1AA87E57003A1FCC /* LaunchScreen.xib in Resources */,
 				E72C37531AB1E8CB00F290BE /* linea-basic-elaboration-10_66(2)_48.png in Resources */,
 				E74D97501AB2D06E0062650D /* reset.png in Resources */,
-				E72C374B1AB1E6CC00F290BE /* right_arrow_blue.png in Resources */,
 				E72C37481AB1E6CC00F290BE /* earth_blue.png in Resources */,
-				E72C374A1AB1E6CC00F290BE /* left_arrow_blue.png in Resources */,
-				E72C370B1AB16CAD00F290BE /* cameraIcon.png in Resources */,
 				E7F803361AA88A64000B2FCB /* CustomCell.xib in Resources */,
-				E72C374C1AB1E6CC00F290BE /* save_blue.png in Resources */,
 				E74D974F1AB2D06E0062650D /* curve.png in Resources */,
 				E7A295EA1AA87E57003A1FCC /* Images.xcassets in Resources */,
 				E72C374D1AB1E6CC00F290BE /* TL_blue.png in Resources */,
 				E72C37511AB1E8CB00F290BE /* linea-arrows-10_e03f(1)_48.png in Resources */,
 				E74D974E1AB2D06E0062650D /* blackwhite.png in Resources */,
-				E72C371C1AB17C1300F290BE /* cameraIcon64.png in Resources */,
 				E72C371B1AB17C1300F290BE /* cameraIcon48.png in Resources */,
 				E74D97521AB2D06E0062650D /* vignette.png in Resources */,
 			);

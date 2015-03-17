@@ -28,9 +28,9 @@
     
     [self showPhoto:self.assetsurl];
     
-    self.picker.delegate = self;
-    _categoryArray = [NSArray arrayWithObjects:
-                      @"Place",@"Food",@"View",@"Other",nil];
+//    self.picker.delegate = self;
+//    _categoryArray = [NSArray arrayWithObjects:
+//                      @"Place",@"Food",@"View",@"Other",nil];
     
     //UserDefaultObjectを用意する
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

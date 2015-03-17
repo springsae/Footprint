@@ -131,8 +131,9 @@
                       
                       UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
                     
-                      //画像を回転させないための処理　確認
-                      thumbnail =  [UIImage imageWithCGImage:thumbnail.CGImage scale:thumbnail.scale orientation:UIImageOrientationUp];
+//                      //画像を回転させないための処理　確認
+//                      thumbnail =  [UIImage imageWithCGImage:thumbnail.CGImage scale:thumbnail.scale orientation:UIImageOrientationUp];
+                      
                       
                       UIImageView *imagev = [[UIImageView alloc]initWithFrame:CGRectMake(_img_x, _img_y, 160, 160)];
                       imagev.image = thumbnail;
