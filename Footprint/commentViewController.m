@@ -50,8 +50,31 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
 
-
-
+    [self.smallImage setContentMode:UIViewContentModeScaleAspectFit];
+    
+//確認
+//    switch (_) {
+//        case 0:
+//            _imageEffect = 1;
+//            self.smallImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
+//            break;
+//        case 1:
+//            _imageEffect = 2;
+//            self.smallImage.image = [_originalImage saturateImage:0 withContrast:1.05];
+//            break;
+//        case 2:
+//            _imageEffect = 3;
+//            self.smallImage.image = [_originalImage saturateImage:1.7 withContrast:1];
+//            break;
+//        case 3:
+//             _imageEffect = 4;
+//            self.smallImage.image = [_originalImage curveFilter];
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
 }
 
 
@@ -64,8 +87,8 @@
     
     if (!_assetsurl)
     {
-        UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-        self.smallImage.image = originalImage;
+        UIImage *_originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+        self.smallImage.image = _originalImage;
     }
     
 }
@@ -311,8 +334,19 @@
     
     
 }
+//確認
 - (IBAction)tapShare:(id)sender
 {
-    
+    if( [UIActivityViewController class] ) {
+        //共有テキスト設定
+        NSString *textToShare = [NSString stringWithFormat:@"%@", @"共有するテキストがここに入ります"];
+        //共有イメージ設定
+        UIImage *imageToShare = self.assetsurl;
+        //共有アイテム生成
+        NSArray *itemsToShare = [[NSArray alloc] initWithObjects:textToShare, imageToShare, nil];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeMessage, UIActivityTypePostToWeibo, nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
 }
 @end

@@ -11,6 +11,7 @@
 #import "CustomTableViewCell.h"
 #import "TableViewConst.h"
 #import "commentViewController.h"
+#import "ShareViewController.h" 
 
 
 @interface TLViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>

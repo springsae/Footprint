@@ -35,7 +35,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
     
-    
+    [self.showImage setContentMode:UIViewContentModeScaleAspectFit];
 
     
 }
@@ -173,23 +173,27 @@
 
 - (IBAction)vignetteBtn:(id)sender {
     self.showImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
+    int _imageEffect = 1;
     
 }
 
 - (IBAction)blackAndWhiteBtn:(id)sender {
     self.showImage.image = [_originalImage saturateImage:0 withContrast:1.05];
+    int _imageEffect = 2;
 }
 
 - (IBAction)saturationBtn:(id)sender {
     self.showImage.image = [_originalImage saturateImage:1.7 withContrast:1];
+    int _imageEffect = 3;
 }
 
 - (IBAction)CurveBtn:(id)sender {
     self.showImage.image = [_originalImage curveFilter];
+    int _imageEffect = 4;
 }
-//
-//- (IBAction)returnBtn:(id)sender {
-//    [self.myPhoto setImage:self.originalImage];
-//    
-//}
+
+- (IBAction)returnBtn:(id)sender {
+    self.showImage.image = _originalImage;
+    
+}
 @end

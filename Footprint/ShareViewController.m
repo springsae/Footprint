@@ -37,7 +37,11 @@
     
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
-    UIImage *backgroundImage = [UIImage imageNamed:@"sky_BG4_usui.jpg"];
+    
+    [self.shareImage setContentMode:UIViewContentModeScaleAspectFit];
+    
+    self.shareComment.editable = NO;
+
 
 }
 
@@ -91,5 +95,17 @@
 - (IBAction)tapBackTL:(id)sender {
 }
 - (IBAction)tapShare:(id)sender {
+    if( [UIActivityViewController class] ) {
+        //共有テキスト設定
+        NSString *textToShare = [NSString stringWithFormat:@"%@", @"共有するテキストがここに入ります"];
+        //共有イメージ設定
+        UIImage *imageToShare = _assetsUrl;
+        //共有アイテム生成
+        NSArray *itemsToShare = [[NSArray alloc] initWithObjects:textToShare, imageToShare, nil];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+        activityVC.excludedActivityTypes = [[NSArray alloc] initWithObjects: UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll, UIActivityTypeMessage, UIActivityTypePostToWeibo, nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+
 }
 @end

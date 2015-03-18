@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backTL;
 - (IBAction)tapShare:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
 @property (nonatomic,assign) NSString *assetsurl;
 

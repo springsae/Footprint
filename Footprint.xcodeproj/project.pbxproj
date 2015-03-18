@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5E67AFCCEDB0485D6DB8DD8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7900792C989D3216B2BADF34 /* libPods.a */; };
+		E70551131AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png in Resources */ = {isa = PBXBuildFile; fileRef = E70551121AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png */; };
 		E7293F441AB8045F0002CB1F /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7293F431AB8045F0002CB1F /* ShareViewController.m */; };
 		E72C36E51AAEDD8000F290BE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36E41AAEDD8000F290BE /* CoreMedia.framework */; };
 		E72C36E71AAEDD8E00F290BE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36E61AAEDD8E00F290BE /* CoreVideo.framework */; };
@@ -77,6 +78,7 @@
 		21AC98725224CB663AC47C5F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7900792C989D3216B2BADF34 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3E32EE6B4CDBF9DC79EEAE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E70551121AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linea-basic-elaboration-10_6e(0)_48.png"; sourceTree = "<group>"; };
 		E7293F421AB8045F0002CB1F /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		E7293F431AB8045F0002CB1F /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		E72C36E41AAEDD8000F290BE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -191,6 +193,7 @@
 		E752CA0D1AAEBA64006742A7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E70551121AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png */,
 				E74D97491AB2D06E0062650D /* blackwhite.png */,
 				E74D974A1AB2D06E0062650D /* curve.png */,
 				E74D974B1AB2D06E0062650D /* reset.png */,
@@ -408,6 +411,7 @@
 				E72C373F1AB1DE4900F290BE /* sky_BG4_usui.jpg in Resources */,
 				E72C37491AB1E6CC00F290BE /* home_blue.png in Resources */,
 				E72C37521AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png in Resources */,
+				E70551131AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png in Resources */,
 				E74D97511AB2D06E0062650D /* sarutation.png in Resources */,
 				E7A295E81AA87E57003A1FCC /* Main.storyboard in Resources */,
 				E7A295ED1AA87E57003A1FCC /* LaunchScreen.xib in Resources */,

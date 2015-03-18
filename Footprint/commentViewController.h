@@ -17,6 +17,8 @@
     NSArray *_categoryArray;
     NSMutableArray *_photolist;
     NSString *_photoDateTime;
+    UIImage *_originalImage;
+    int _imageEffect;
     
 }
 

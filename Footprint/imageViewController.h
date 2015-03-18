@@ -20,6 +20,7 @@
     ALAssetsLibrary *_library;
     NSArray *_imageChangeArray;
     UIImage *_originalImage;
+    int *_imageEffect;
     
     
 }
