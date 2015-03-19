@@ -121,7 +121,7 @@
     [self.view addSubview:MapView];
     
 //     [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
 }
 
 //ピンをたてる

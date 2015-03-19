@@ -33,9 +33,9 @@
 //    _imageChangeArray = [NSArray arrayWithObjects:
 //                      @"Saturation",@"B&W",@"Vignette",@"Vintage",@"Curve",nil];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
     
-    [self.showImage setContentMode:UIViewContentModeScaleAspectFit];
+//    [self.showImage setContentMode:UIViewContentModeScaleAspectFit];
 
     
 }
@@ -51,9 +51,9 @@
     
     if (!_assetsurl)
     {
-        UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *_originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
 //        [originalImage setContentMode:UIViewContentModeScaleAspectFill];
-        self.showImage.image = originalImage;
+        self.showImage.image = _originalImage;
     }
     
 //    UIGraphicsBeginImageContext(originalImage.size);

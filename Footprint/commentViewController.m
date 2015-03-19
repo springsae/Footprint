@@ -48,12 +48,12 @@
     [[self.commentText layer] setBorderColor:[[UIColor blackColor] CGColor]];
     [[self.commentText layer] setBorderWidth:1.0];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
 
-    [self.smallImage setContentMode:UIViewContentModeScaleAspectFit];
+//    [self.smallImage setContentMode:UIViewContentModeScaleAspectFit];
     
-//確認
-//    switch (_) {
+////加工画像保存   
+//    switch (_imageEffect) {
 //        case 0:
 //            _imageEffect = 1;
 //            self.smallImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
@@ -74,7 +74,7 @@
 //        default:
 //            break;
 //    }
-//
+
 }
 
 
@@ -87,8 +87,8 @@
     
     if (!_assetsurl)
     {
-        UIImage *_originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-        self.smallImage.image = _originalImage;
+        UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+        self.smallImage.image = originalImage;
     }
     
 }
@@ -151,6 +151,29 @@
          }
          
     } failureBlock: nil];
+    
+    switch (_imageEffect) {
+        case 0:
+            _imageEffect = 1;
+            self.smallImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
+            break;
+        case 1:
+            _imageEffect = 2;
+            self.smallImage.image = [_originalImage saturateImage:0 withContrast:1.05];
+            break;
+        case 2:
+            _imageEffect = 3;
+            self.smallImage.image = [_originalImage saturateImage:1.7 withContrast:1];
+            break;
+        case 3:
+            _imageEffect = 4;
+            self.smallImage.image = [_originalImage curveFilter];
+            break;
+            
+        default:
+            break;
+    }
+
     
 }
 
@@ -244,7 +267,7 @@
     //コメントページのdictionaryを作成
     NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
     [myDictionary setObject:_assetsurl forKey:@"photo"];
-    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
+//    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
     [myDictionary setObject:_commentText.text forKey:@"comment"];
     
     if (!_photoDateTime){

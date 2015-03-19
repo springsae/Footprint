@@ -47,8 +47,8 @@
         _library = [[ALAssetsLibrary alloc]init];
     }
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
-    UIImage *backgroundImage = [UIImage imageNamed:@"sky_BG4_usui.jpg"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
+    UIImage *backgroundImage = [UIImage imageNamed:@"sky_BG4_usui2.jpg"];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
 
 }

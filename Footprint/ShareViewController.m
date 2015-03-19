@@ -36,11 +36,13 @@
 //    _photolist = [[defaults objectForKey:@"photoData"] mutableCopy];
     
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
     
-    [self.shareImage setContentMode:UIViewContentModeScaleAspectFit];
+//    [self.shareImage setContentMode:UIViewContentModeScaleAspectFit];
     
     self.shareComment.editable = NO;
+    
+    
 
 
 }
@@ -107,5 +109,13 @@
         [self presentViewController:activityVC animated:YES completion:nil];
     }
 
+}
+
+//画像ファイルを取得
+- (UIImage *)image
+{
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = _assetsUrl;
+    return (imageView.image);
 }
 @end

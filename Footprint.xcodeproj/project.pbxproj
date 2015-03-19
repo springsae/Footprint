@@ -20,7 +20,6 @@
 		E72C36F81AB00B0000F290BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72C36F71AB00B0000F290BE /* CoreLocation.framework */; };
 		E72C36FB1AB00CCD00F290BE /* FormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C36FA1AB00CCD00F290BE /* FormatterUtil.m */; };
 		E72C371B1AB17C1300F290BE /* cameraIcon48.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C370E1AB17C1300F290BE /* cameraIcon48.png */; };
-		E72C373F1AB1DE4900F290BE /* sky_BG4_usui.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */; };
 		E72C37481AB1E6CC00F290BE /* earth_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37421AB1E6CC00F290BE /* earth_blue.png */; };
 		E72C37491AB1E6CC00F290BE /* home_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37431AB1E6CC00F290BE /* home_blue.png */; };
 		E72C374D1AB1E6CC00F290BE /* TL_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E72C37471AB1E6CC00F290BE /* TL_blue.png */; };
@@ -47,6 +46,7 @@
 		E7A2961C1AA882C4003A1FCC /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A2961A1AA882C4003A1FCC /* CustomTableViewCell.m */; };
 		E7A2961F1AA883C8003A1FCC /* TableViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A2961E1AA883C7003A1FCC /* TableViewConst.m */; };
 		E7ABFB1F1AB6A1C100245A76 /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = E7ABFB1E1AB6A1C100245A76 /* UIImage+Filters.m */; };
+		E7B7F1071ABA9EA3009B4F81 /* sky_BG4_usui2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E7B7F1061ABA9EA3009B4F81 /* sky_BG4_usui2.jpg */; };
 		E7F803361AA88A64000B2FCB /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F803351AA88A64000B2FCB /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +93,6 @@
 		E72C36FA1AB00CCD00F290BE /* FormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatterUtil.m; sourceTree = "<group>"; };
 		E72C36FC1AB025D100F290BE /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GPUImage.xcodeproj; sourceTree = "<group>"; };
 		E72C370E1AB17C1300F290BE /* cameraIcon48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraIcon48.png; sourceTree = "<group>"; };
-		E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky_BG4_usui.jpg; sourceTree = "<group>"; };
 		E72C37421AB1E6CC00F290BE /* earth_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth_blue.png; sourceTree = "<group>"; };
 		E72C37431AB1E6CC00F290BE /* home_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_blue.png; sourceTree = "<group>"; };
 		E72C37471AB1E6CC00F290BE /* TL_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TL_blue.png; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		E7A2961E1AA883C7003A1FCC /* TableViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewConst.m; sourceTree = "<group>"; };
 		E7ABFB1D1AB6A1C100245A76 /* UIImage+Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Filters.h"; sourceTree = "<group>"; };
 		E7ABFB1E1AB6A1C100245A76 /* UIImage+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Filters.m"; sourceTree = "<group>"; };
+		E7B7F1061ABA9EA3009B4F81 /* sky_BG4_usui2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky_BG4_usui2.jpg; sourceTree = "<group>"; };
 		E7F803351AA88A64000B2FCB /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +193,7 @@
 		E752CA0D1AAEBA64006742A7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E7B7F1061ABA9EA3009B4F81 /* sky_BG4_usui2.jpg */,
 				E70551121AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png */,
 				E74D97491AB2D06E0062650D /* blackwhite.png */,
 				E74D974A1AB2D06E0062650D /* curve.png */,
@@ -205,7 +206,6 @@
 				E72C37421AB1E6CC00F290BE /* earth_blue.png */,
 				E72C37431AB1E6CC00F290BE /* home_blue.png */,
 				E72C37471AB1E6CC00F290BE /* TL_blue.png */,
-				E72C373E1AB1DE4900F290BE /* sky_BG4_usui.jpg */,
 				E72C370E1AB17C1300F290BE /* cameraIcon48.png */,
 			);
 			path = images;
@@ -408,7 +408,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E72C373F1AB1DE4900F290BE /* sky_BG4_usui.jpg in Resources */,
 				E72C37491AB1E6CC00F290BE /* home_blue.png in Resources */,
 				E72C37521AB1E8CB00F290BE /* linea-arrows-10_e04b(0)_48.png in Resources */,
 				E70551131AB9B15E005D3359 /* linea-basic-elaboration-10_6e(0)_48.png in Resources */,
@@ -417,6 +416,7 @@
 				E7A295ED1AA87E57003A1FCC /* LaunchScreen.xib in Resources */,
 				E72C37531AB1E8CB00F290BE /* linea-basic-elaboration-10_66(2)_48.png in Resources */,
 				E74D97501AB2D06E0062650D /* reset.png in Resources */,
+				E7B7F1071ABA9EA3009B4F81 /* sky_BG4_usui2.jpg in Resources */,
 				E72C37481AB1E6CC00F290BE /* earth_blue.png in Resources */,
 				E7F803361AA88A64000B2FCB /* CustomCell.xib in Resources */,
 				E74D974F1AB2D06E0062650D /* curve.png in Resources */,

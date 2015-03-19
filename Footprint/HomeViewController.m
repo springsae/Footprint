@@ -39,6 +39,13 @@
     self.myScrollView.contentSize = CGSizeMake(320, 2000);
     self.myScrollView.delegate = self;
     
+//    /* インスタンス作成 */
+//    HomeViewController *pagingView = [[InfiniteHomeView alloc] initWithFrame:frame];
+//    /* 1ページあたりのサイズを指定 */
+//    pagingView.pageSize = CGSizeMake(320.f, 100.f);
+//    /* スクロール方向を垂直に指定 */
+//    pagingView.scrollDirection = InfinitePagingViewVerticalScrollDirection;
+    
     if([CLLocationManager locationServicesEnabled]){
         self.locationManager =[[CLLocationManager alloc] init];
         [self.locationManager requestWhenInUseAuthorization];
@@ -71,7 +78,7 @@
 //    UIGraphicsEndImageContext();
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
     
    
     
@@ -131,7 +138,7 @@
                       
                       UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
                     
-//                      //画像を回転させないための処理　確認
+////                      //画像を回転させないための処理　確認
 //                      thumbnail =  [UIImage imageWithCGImage:thumbnail.CGImage scale:thumbnail.scale orientation:UIImageOrientationUp];
                       
                       
