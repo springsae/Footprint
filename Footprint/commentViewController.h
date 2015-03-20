@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface commentViewController : UIViewController<UIPickerViewDelegate>
+@interface commentViewController : UIViewController<UIPickerViewDelegate,UITextFieldDelegate>
 {
     NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
     ALAssetsLibrary *_library;
@@ -18,7 +18,7 @@
     NSMutableArray *_photolist;
     NSString *_photoDateTime;
     UIImage *_originalImage;
-    int _imageEffect;
+    
     
 }
 
@@ -45,5 +45,6 @@
 //
 //- (IBAction)tapShare:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *commentText;
+@property (nonatomic,assign)  int imageEffect;
 
 @end

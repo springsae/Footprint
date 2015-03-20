@@ -11,11 +11,12 @@
 #import "HomeViewController.h"
 
 
-@interface commentViewController ()<UITextFieldDelegate,UITextViewDelegate>
+@interface  commentViewController ()<UITextFieldDelegate,UITextViewDelegate>
 
 @end
 
 @implementation commentViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,6 +76,7 @@
 //            break;
 //    }
 
+    
 }
 
 
@@ -115,6 +117,29 @@
              //fullScreenImageで元画像と同じ解像度の写真を取得する。
              UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
              self.smallImage.image = fullscreenImage; //イメージをセット
+             
+             switch (_imageEffect) {
+                 case 1:
+                     self.smallImage.image = [self.smallImage.image vignetteWithRadius:0 andIntensity:18];
+                     break;
+                 case 2:
+                     
+                     self.smallImage.image = [self.smallImage.image saturateImage:0 withContrast:1.05];
+                     break;
+                 case 3:
+                     
+                     self.smallImage.image = [self.smallImage.image saturateImage:1.7 withContrast:1];
+                     break;
+                 case 4:
+    
+                     self.smallImage.image = [self.smallImage.image curveFilter];
+                     break;
+                     
+                 default:
+                     break;
+             }
+
+             
              //exifを取得する
              // raw data
              NSUInteger size = [assetRepresentation size];
@@ -152,27 +177,27 @@
          
     } failureBlock: nil];
     
-    switch (_imageEffect) {
-        case 0:
-            _imageEffect = 1;
-            self.smallImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
-            break;
-        case 1:
-            _imageEffect = 2;
-            self.smallImage.image = [_originalImage saturateImage:0 withContrast:1.05];
-            break;
-        case 2:
-            _imageEffect = 3;
-            self.smallImage.image = [_originalImage saturateImage:1.7 withContrast:1];
-            break;
-        case 3:
-            _imageEffect = 4;
-            self.smallImage.image = [_originalImage curveFilter];
-            break;
-            
-        default:
-            break;
-    }
+//    switch (_imageEffect) {
+//        case 0:
+//            _imageEffect = 1;
+//            self.smallImage.image = [_originalImage vignetteWithRadius:0 andIntensity:18];
+//            break;
+//        case 1:
+//            _imageEffect = 2;
+//            self.smallImage.image = [_originalImage saturateImage:0 withContrast:1.05];
+//            break;
+//        case 2:
+//            _imageEffect = 3;
+//            self.smallImage.image = [_originalImage saturateImage:1.7 withContrast:1];
+//            break;
+//        case 3:
+//            _imageEffect = 4;
+//            self.smallImage.image = [_originalImage curveFilter];
+//            break;
+//            
+//        default:
+//            break;
+//    }
 
     
 }
@@ -221,6 +246,30 @@
 //    return YES;
 //}
 
+
+-(void) scrollToVisible:(UITextField *)textField
+{
+    if ([textField isFirstResponder] && textField.selectedTextRange.end) {
+        CGRect caretRect = [textField caretRectForPosition:textField.selectedTextRange.end];
+        [_commentText scrollRectToVisible:caretRect animated:YES];
+    }
+}
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self performSelector:@selector(scrollToVisible:) withObject:textField afterDelay:0.3];
+}
+
+- (void) textFieldDidChangeSelection:(UITextView *)textField
+{
+    [self performSelector:@selector(scrollToVisible:) withObject:textField afterDelay:0.1];
+}
+
+-(void) textFieldDidChange:(UITextField *)textField
+{
+    [self performSelector:@selector(scrollToVisible:) withObject:textField afterDelay:0.2];
+}
+
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSMutableString *tmp = [textField.text mutableCopy];
@@ -229,15 +278,20 @@
 }
 
 
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    // キーボードの非表示.
+//    [self.view endEditing:YES];
+//    // 改行しない.
+//    return NO;
+//}
+
+// UITextField の Return キーをタップ時にキーボードを隠す
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    // キーボードの非表示.
-    [self.view endEditing:YES];
-    // 改行しない.
-    return NO;
+    [textField resignFirstResponder];
+    return YES;
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -263,58 +317,127 @@
 
 - (IBAction)tapOkButton:(id)sender
 {
-    
-    //コメントページのdictionaryを作成
-    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setObject:_assetsurl forKey:@"photo"];
-//    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
-    [myDictionary setObject:_commentText.text forKey:@"comment"];
-    
-    if (!_photoDateTime){
-        _photoDateTime = @"";
-    
-    }else{
-        NSLog(@"%@",_photoDateTime);
+    [_library writeImageToSavedPhotosAlbum:self.smallImage.image.CGImage orientation:self.smallImage.image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
+        if(error){
+            NSLog(@"error");
+            
+        }else{
+            NSLog(@"save");
+            _assetsurl = [(NSURL*) assetURL absoluteString];
+            
+            //コメントページのdictionaryを作成
+            NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
+            [myDictionary setObject:_assetsurl forKey:@"photo"];
+            //    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
+            [myDictionary setObject:_commentText.text forKey:@"comment"];
+            
+            if (!_photoDateTime){
+                _photoDateTime = @"";
+                
+            }else{
+                NSLog(@"%@",_photoDateTime);
+                
+                NSDateFormatter *DateFormatter =[[NSDateFormatter alloc] init];
+                [DateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
+                
+                //一旦日付型に変換
+                NSDate *photoDate = [DateFormatter dateFromString:_photoDateTime];
+                
+                //フォーマットをyyyy/MM/dd HH:mm　に変換して再代入
+                [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+                _photoDateTime = [DateFormatter stringFromDate:photoDate];
+            }
+            
+            [myDictionary setObject:_photoDateTime forKey:@"datetime"];
+            
+            //NSMutableArrayにdictionaryを挿入
+            //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
+            if(_photolist==nil)
+            {
+                _photolist= [[NSMutableArray alloc] init];
+            }
+            
+            
+            [_photolist addObject:myDictionary];
+            
+            NSLog(@"%@データあり",myDictionary);
+            
+            //UserDefaultObjectを用意する
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            
+            //画像を保存
+            [defaults setObject:_photolist forKey:@"photoData"];
+            NSMutableArray *assetsURLs = [[defaults objectForKey:@"assetsURLs"] mutableCopy];
+            
+            [assetsURLs removeLastObject];
+            [assetsURLs addObject:_assetsurl];
+            [defaults setObject:assetsURLs forKey:@"assetsURLs"];
+            
+            [defaults synchronize];
+            
+            NSLog(@"%@保存",_photolist);
+            
+            //    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+            
+            //    [self performSegueWithIdentifier:@"backToHome" sender:self];
+            
+            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
         
-        NSDateFormatter *DateFormatter =[[NSDateFormatter alloc] init];
-        [DateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
-        
-        //一旦日付型に変換
-        NSDate *photoDate = [DateFormatter dateFromString:_photoDateTime];
-        
-        //フォーマットをyyyy/MM/dd HH:mm　に変換して再代入
-        [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
-        _photoDateTime = [DateFormatter stringFromDate:photoDate];
-    }
+            
+    }];
     
-    [myDictionary setObject:_photoDateTime forKey:@"datetime"];
-    
-    //NSMutableArrayにdictionaryを挿入
-    //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
-    if(_photolist==nil)
-    {
-        _photolist= [[NSMutableArray alloc] init];
-    }
-    
-    
-    [_photolist addObject:myDictionary];
-    
-    NSLog(@"%@データあり",myDictionary);
-    
-    //UserDefaultObjectを用意する
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    //画像を保存
-    [defaults setObject:_photolist forKey:@"photoData"];
-    [defaults synchronize];
-    
-    NSLog(@"%@保存",_photolist);
-    
-//    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
-    
-//    [self performSegueWithIdentifier:@"backToHome" sender:self];
-    
-    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//    //コメントページのdictionaryを作成
+//    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
+//    [myDictionary setObject:_assetsurl forKey:@"photo"];
+////    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
+//    [myDictionary setObject:_commentText.text forKey:@"comment"];
+//    
+//    if (!_photoDateTime){
+//        _photoDateTime = @"";
+//    
+//    }else{
+//        NSLog(@"%@",_photoDateTime);
+//        
+//        NSDateFormatter *DateFormatter =[[NSDateFormatter alloc] init];
+//        [DateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
+//        
+//        //一旦日付型に変換
+//        NSDate *photoDate = [DateFormatter dateFromString:_photoDateTime];
+//        
+//        //フォーマットをyyyy/MM/dd HH:mm　に変換して再代入
+//        [DateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+//        _photoDateTime = [DateFormatter stringFromDate:photoDate];
+//    }
+//    
+//    [myDictionary setObject:_photoDateTime forKey:@"datetime"];
+//    
+//    //NSMutableArrayにdictionaryを挿入
+//    //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
+//    if(_photolist==nil)
+//    {
+//        _photolist= [[NSMutableArray alloc] init];
+//    }
+//    
+//    
+//    [_photolist addObject:myDictionary];
+//    
+//    NSLog(@"%@データあり",myDictionary);
+//    
+//    //UserDefaultObjectを用意する
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    //画像を保存
+//    [defaults setObject:_photolist forKey:@"photoData"];
+//    [defaults synchronize];
+//    
+//    NSLog(@"%@保存",_photolist);
+//    
+////    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+//    
+////    [self performSegueWithIdentifier:@"backToHome" sender:self];
+//    
+//    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     
 }
