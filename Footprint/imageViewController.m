@@ -52,7 +52,7 @@
     if (!_assetsurl)
     {
         UIImage *_originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-//        [originalImage setContentMode:UIViewContentModeScaleAspectFill];
+//        [_originalImage setContentMode:UIViewContentModeScaleAspectFill];
         self.showImage.image = _originalImage;
     }
     

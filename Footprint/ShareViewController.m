@@ -41,12 +41,18 @@
 //    [self.shareImage setContentMode:UIViewContentModeScaleAspectFit];
     
     self.shareComment.editable = NO;
-    
-    
-
 
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"sharePage"]){
+        TLViewController *tVC = [segue destinationViewController];
+        tVC.assetsurl = self.assetsurl;
+        
+    }
+    
+}
 
 -(void)showPhoto:(NSString *)url
 {
@@ -69,7 +75,7 @@
              
              //             [fullscreenImage setContentMode:UIViewContentModeScaleAspectFill];
              self.shareImage.image = fullscreenImage; //イメージをセット
-             _originalImage = fullscreenImage;
+//             _originalImage = fullscreenImage;
              
          }else
          {
@@ -94,6 +100,8 @@
 }
 */
 
+
+
 - (IBAction)tapBackTL:(id)sender {
 }
 - (IBAction)tapShare:(id)sender {
@@ -101,7 +109,7 @@
         //共有テキスト設定
         NSString *textToShare = [NSString stringWithFormat:@"%@", @"共有するテキストがここに入ります"];
         //共有イメージ設定
-        UIImage *imageToShare = _assetsUrl;
+        UIImage *imageToShare = self.shareImage.image;
         //共有アイテム生成
         NSArray *itemsToShare = [[NSArray alloc] initWithObjects:textToShare, imageToShare, nil];
         UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
@@ -115,7 +123,7 @@
 - (UIImage *)image
 {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = _assetsUrl;
+    imageView.image = _assetsurl;
     return (imageView.image);
 }
 @end

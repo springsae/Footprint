@@ -51,7 +51,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
 
-//    [self.smallImage setContentMode:UIViewContentModeScaleAspectFit];
+    [self.smallImage setContentMode:UIViewContentModeScaleAspectFit];
     
 ////加工画像保存   
 //    switch (_imageEffect) {

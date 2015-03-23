@@ -110,7 +110,13 @@
 // Cell が選択された時 確認
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath*) indexPath
 {
+    
+    NSDictionary *rowDictionary = _assetsUrls[indexPath.row];
+    self.assetsurl = [rowDictionary objectForKey:@"photo"];
+    
+    
     [self performSegueWithIdentifier:@"sharePage" sender:self];
+    
 }
 
 

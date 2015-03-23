@@ -134,6 +134,10 @@
                       
                       _img_y = 160 * (_counter / 2);
                       
+                      if (_img_y + 160 > 2000){
+                          self.myScrollView.contentSize = CGSizeMake(320, _img_y+200);
+                      }
+                      
 //                      UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullResolutionImage]];
                       
                       UIImage *thumbnail = [UIImage imageWithCGImage:[asset thumbnail]];
@@ -290,6 +294,10 @@
         //位置情報を上書き
         if (self.locationManager) {
             [metadata setObject:[self GPSDictionaryForLocation:self.locationManager.location] forKey:(NSString *)kCGImagePropertyGPSDictionary];
+//            [metadata setObject:[NSString stringWithFormat:@"%ld",originalImage.imageOrientation] forKey:@"Orientation"];
+            [metadata setObject:[NSString stringWithFormat:@"%d",originalImage.imageOrientation] forKey:@"Orientation"];
+            
+
         }
         
         
