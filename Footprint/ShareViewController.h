@@ -15,6 +15,8 @@
     ALAssetsLibrary *_library;
     UIImage *_originalImage;
     NSMutableArray *_photolist;
+   
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *shareComment;
@@ -26,5 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
 @property (nonatomic,assign) NSString *assetsurl;
+@property (nonatomic,assign) int selectNum;
 
 @end

@@ -159,6 +159,9 @@
                             _photoDateTime = metadata[@"{TIFF}"][@"DateTime"];
 //                         label.text = metadata[@"{TIFF}"][@"DateTime"];
                          NSLog(@"%@", [metadata description]);
+                         _metadata = [metadata mutableCopy];
+                         
+                         [_metadata setObject:[NSString stringWithFormat:@"%d",self.smallImage.image.imageOrientation] forKey:@"Orientation"];
                      }
                      else
                      {
@@ -317,7 +320,7 @@
 
 - (IBAction)tapOkButton:(id)sender
 {
-    [_library writeImageToSavedPhotosAlbum:self.smallImage.image.CGImage orientation:self.smallImage.image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
+    [_library writeImageToSavedPhotosAlbum:self.smallImage.image.CGImage metadata:_metadata completionBlock:^(NSURL *assetURL, NSError *error) {
         if(error){
             NSLog(@"error");
             

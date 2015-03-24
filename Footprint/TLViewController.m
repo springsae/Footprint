@@ -127,6 +127,9 @@
         ShareViewController *svc = (ShareViewController*)[segue destinationViewController];
         // 移行先の ViewController に画像名を渡す
         svc.assetsurl = self.assetsurl;
+        svc.selectNum = self.tableView.indexPathForSelectedRow.row;
+        
+        
     }
 }
 

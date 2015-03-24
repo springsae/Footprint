@@ -22,8 +22,15 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     //一旦配列に取り出す
-    _assetsUrl = [defaults objectForKey:@"photoData"];
-
+    _photolist = [defaults objectForKey:@"photoData"];
+    
+    //撮影順に並べる
+    NSSortDescriptor *sortDiscNumber = [[NSSortDescriptor alloc] initWithKey:@"datetime" ascending:NO];
+    
+    NSArray *sortArray = [NSArray arrayWithObjects:sortDiscNumber, nil];
+    
+    _photolist = [_photolist sortedArrayUsingDescriptors:sortArray];
+    
     
     if (_library ==nil)
     {
@@ -41,7 +48,9 @@
 //    [self.shareImage setContentMode:UIViewContentModeScaleAspectFit];
     
     self.shareComment.editable = NO;
-
+    
+    self.shareComment.text = _photolist[self.selectNum][@"comment"];
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

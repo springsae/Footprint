@@ -22,18 +22,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //UserDefaultObjectを用意する
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    //一旦配列に取り出す
-    _assetsUrls = [defaults objectForKey:@"assetsURLs"];
+//    //UserDefaultObjectを用意する
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    //一旦配列に取り出す
+//    _assetsUrls = [defaults objectForKey:@"assetsURLs"];
     
     _counter = 0;
     
-    if (_library ==nil)
-    {
-        _library = [[ALAssetsLibrary alloc]init];
-    }
+//    if (_library ==nil)
+//    {
+//        _library = [[ALAssetsLibrary alloc]init];
+//    }
     
     
 //    //------- exifを取得する --------
@@ -113,12 +113,12 @@
 //    thumbnail.coordinate = CLLocationCoordinate2DMake(10.317347, 123.905759);
 //    thumbnail.disclosureBlock = ^{ NSLog(@"selected ayala"); };
     
-    for (NSString *url in _assetsUrls){
-        [self settingPin:url];
-    }
-    
-    //mapに表示させる
-    [self.view addSubview:MapView];
+//    for (NSString *url in _assetsUrls){
+//        [self settingPin:url];
+//    }
+//    
+//    //mapに表示させる
+//    [self.view addSubview:MapView];
     
 //     [UITabBar appearance].backgroundImage = [UIImage imageNamed:@"tabbarBG3"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"sky_BG4_usui2.jpg"]];
@@ -215,7 +215,31 @@
     }
     return nil;
 }
-//
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    if (_library ==nil)
+    {
+        _library = [[ALAssetsLibrary alloc]init];
+    }
+
+    //UserDefaultObjectを用意する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //一旦配列に取り出す
+    _assetsUrls = [defaults objectForKey:@"assetsURLs"];
+
+    
+    for (NSString *url in _assetsUrls){
+        [self settingPin:url];
+    }
+    
+    //mapに表示させる
+    [self.view addSubview:MapView];
+    
+ 
+}
+
 ////位置情報オブジェクトを取得する
 //- (NSDictionary *)GPSDictionaryForLocation:(CLLocation *)location
 //{

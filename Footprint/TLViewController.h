@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,assign) NSString *assetsurl;
+@property (strong, nonatomic) NSMutableArray *rows;
 
 
 @end

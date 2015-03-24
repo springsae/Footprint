@@ -18,6 +18,8 @@
     NSMutableArray *_photolist;
     NSString *_photoDateTime;
     UIImage *_originalImage;
+    NSMutableDictionary *_metadata;
+    
     
     
 }
